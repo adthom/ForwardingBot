@@ -1,0 +1,597 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "botServices_endpoint": {
+      "type": "SecureString"
+    },
+    "botClientId": {
+      "defaultValue": "<<botclientid>>",
+      "type": "String"
+    },
+    "cleanResourceName": {
+      "defaultValue": "<<name for resources with only lowercase alphanumeric>>",
+      "type": "String"
+    },
+    "resourceName": {
+      "defaultValue": "<<name for resources with only lowercase alphanumeric and hyphens>>",
+      "type": "String"
+    },
+    "tenantId": {
+      "defaultValue": "<<tenantId>>",
+      "type": "String"
+    },
+    "location": {
+      "defaultValue": "eastus",
+      "type": "String"
+    }
+  },
+    "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.BotService/botServices",
+      "apiVersion": "2022-09-15",
+      "name": "[parameters('resourceName')]",
+      "location": "global",
+      "sku": {
+        "name": "S1"
+      },
+      "kind": "azurebot",
+      "properties": {
+        "displayName": "[parameters('resourceName')]",
+        "iconUrl": "https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png",
+        "msaAppId": "[parameters('botClientId')]",
+        "msaAppType": "MultiTenant",
+        "luisAppIds": [],
+        "isStreamingSupported": false,
+        "schemaTransformationVersion": "1.3",
+        "tenantId": "[parameters('tenantId')]",
+        "isCmekEnabled": false,
+        "disableLocalAuth": false,
+        "endpoint": "[parameters('botServices_endpoint')]"
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2023-02-01",
+      "name": "[parameters('cleanResourceName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "family": "A",
+          "name": "Standard"
+        },
+        "tenantId": "[parameters('tenantId')]",
+        "accessPolicies": [
+          {
+            "tenantId": "[parameters('tenantId')]",
+            "objectId": "[reference(concat('Microsoft.Web/sites/', parameters('resourceName')), '2018-11-01', 'Full').identity.principalId]",
+            "permissions": {
+              "certificates": [],
+              "keys": [],
+              "secrets": [
+                "get",
+                "list"
+              ]
+            }
+          }
+        ],
+        "enabledForDeployment": true,
+        "enabledForDiskEncryption": true,
+        "enabledForTemplateDeployment": true,
+        "softDeleteRetentionInDays": 90,
+        "vaultUri": "[concat('https://', parameters('cleanResourceName'), '.vault.azure.net/')]",
+        "provisioningState": "Succeeded",
+        "publicNetworkAccess": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2022-09-01",
+      "name": "[parameters('cleanResourceName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "properties": {
+        "minimumTlsVersion": "TLS1_2",
+        "allowBlobPublicAccess": true,
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "virtualNetworkRules": [],
+          "ipRules": [],
+          "defaultAction": "Allow"
+        },
+        "supportsHttpsTrafficOnly": true,
+        "encryption": {
+          "services": {
+            "file": {
+              "keyType": "Account",
+              "enabled": true
+            },
+            "blob": {
+              "keyType": "Account",
+              "enabled": true
+            }
+          },
+          "keySource": "Microsoft.Storage"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2022-09-01",
+      "name": "[parameters('resourceName')]",
+      "location": "East US",
+      "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
+      },
+      "kind": "app",
+      "properties": {
+        "perSiteScaling": false,
+        "elasticScaleEnabled": false,
+        "maximumElasticWorkerCount": 1,
+        "isSpot": false,
+        "reserved": false,
+        "isXenon": false,
+        "hyperV": false,
+        "targetWorkerCount": 0,
+        "targetWorkerSizeId": 0,
+        "zoneRedundant": false
+      }
+    },
+    {
+      "type": "Microsoft.BotService/botServices/channels",
+      "apiVersion": "2022-09-15",
+      "name": "[concat(parameters('resourceName'), '/DirectLineChannel')]",
+      "location": "global",
+      "dependsOn": [
+        "[resourceId('Microsoft.BotService/botServices', parameters('resourceName'))]"
+      ],
+      "properties": {
+        "properties": {
+          "sites": [
+            {
+              "siteName": "Default Site",
+              "isEnabled": true,
+              "isV1Enabled": true,
+              "isV3Enabled": true,
+              "isSecureSiteEnabled": false,
+              "isBlockUserUploadEnabled": false
+            }
+          ],
+          "extensionKey1": "<<unsure if required>>",
+          "extensionKey2": "<<unsure if required>>"
+        },
+        "etag": "<<unsure if required>>",
+        "channelName": "DirectLineChannel",
+        "location": "global"
+      }
+    },
+    {
+      "type": "Microsoft.BotService/botServices/channels",
+      "apiVersion": "2022-09-15",
+      "name": "[concat(parameters('resourceName'), '/MsTeamsChannel')]",
+      "location": "global",
+      "dependsOn": [
+        "[resourceId('Microsoft.BotService/botServices', parameters('resourceName'))]"
+      ],
+      "properties": {
+        "properties": {
+          "enableCalling": true,
+          "incomingCallRoute": "graphPma",
+          "callingWebhook": "[concat('https://',reference(concat('Microsoft.Web/sites/', parameters('resourceName')), '2018-11-01', 'Full').properties.defaultHostName,'/callback')]",
+          "isEnabled": true,
+          "deploymentEnvironment": "CommercialDeployment",
+          "acceptedTerms": true
+        },
+        "etag": "<<unsure if required>>",
+        "channelName": "MsTeamsChannel",
+        "location": "global"
+      }
+    },
+    {
+      "type": "Microsoft.BotService/botServices/channels",
+      "apiVersion": "2022-09-15",
+      "name": "[concat(parameters('resourceName'), '/WebChatChannel')]",
+      "location": "global",
+      "dependsOn": [
+        "[resourceId('Microsoft.BotService/botServices', parameters('resourceName'))]"
+      ],
+      "properties": {
+        "properties": {
+          "sites": [
+            {
+              "siteName": "Default Site",
+              "isEnabled": true,
+              "isWebchatPreviewEnabled": true,
+              "isBlockUserUploadEnabled": false
+            }
+          ]
+        },
+        "etag": "<<unsure if required>>",
+        "channelName": "WebChatChannel",
+        "location": "global"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2016-08-01",
+      "name": "[concat(parameters('resourceName'),'/appsettings')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]",
+        "[resourceId('Microsoft.KeyVault/vaults/', parameters('cleanResourceName'))]"
+      ],
+      "properties": {
+        "Bot__AppId": "[concat('@Microsoft.KeyVault(SecretUri=', reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', parameters('cleanResourceName'), 'botclientid'),'2015-06-01').secretUriWithVersion, ')')]",
+        "Bot__AppSecret": "[concat('@Microsoft.KeyVault(SecretUri=', reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', parameters('cleanResourceName'), 'botsecret'),'2015-06-01').secretUriWithVersion, ')')]",
+        "Bot__AppTenantId": "[concat('@Microsoft.KeyVault(SecretUri=', reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', parameters('cleanResourceName'), 'bottenantid'),'2015-06-01').secretUriWithVersion, ')')]",
+        "Bot__BotBaseUrl": "[concat('@Microsoft.KeyVault(SecretUri=', reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', parameters('cleanResourceName'), 'botbaseuri'),'2015-06-01').secretUriWithVersion, ')')]",
+        "TeamsAdmin__Username": "[concat('@Microsoft.KeyVault(SecretUri=', reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', parameters('cleanResourceName'), 'teamsadminusername'),'2015-06-01').secretUriWithVersion, ')')]",
+        "TeamsAdmin__Password": "[concat('@Microsoft.KeyVault(SecretUri=', reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', parameters('cleanResourceName'), 'teamsadminpassword'),'2015-06-01').secretUriWithVersion, ')')]",
+        "Bot__PlaceCallEndpointUrl": "https://graph.microsoft.com/v1.0"
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2023-02-01",
+      "name": "[concat(parameters('cleanResourceName'), '/botbaseuri')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+      ],
+      "properties": {
+        "attributes": {
+          "enabled": true
+        }
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2023-02-01",
+      "name": "[concat(parameters('cleanResourceName'), '/botclientid')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+      ],
+      "properties": {
+        "attributes": {
+          "enabled": true
+        }
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2023-02-01",
+      "name": "[concat(parameters('cleanResourceName'), '/botsecret')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+      ],
+      "properties": {
+        "attributes": {
+          "enabled": true
+        }
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2023-02-01",
+      "name": "[concat(parameters('cleanResourceName'), '/bottenantid')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+      ],
+      "properties": {
+        "attributes": {
+          "enabled": true
+        }
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2023-02-01",
+      "name": "[concat(parameters('cleanResourceName'), '/teamsadminpassword')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+      ],
+      "properties": {
+        "attributes": {
+          "enabled": true
+        }
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2023-02-01",
+      "name": "[concat(parameters('cleanResourceName'), '/teamsadminusername')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+      ],
+      "properties": {
+        "attributes": {
+          "enabled": true
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('cleanResourceName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
+      ],
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "deleteRetentionPolicy": {
+          "allowPermanentDelete": false,
+          "enabled": false
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('cleanResourceName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
+      ],
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "properties": {
+        "protocolSettings": {
+          "smb": {}
+        },
+        "cors": {
+          "corsRules": []
+        },
+        "shareDeleteRetentionPolicy": {
+          "enabled": true,
+          "days": 7
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('cleanResourceName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
+      ],
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('cleanResourceName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
+      ],
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2022-09-01",
+      "name": "[parameters('resourceName')]",
+      "location": "East US",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('resourceName'))]"
+      ],
+      "kind": "app",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "enabled": true,
+        "hostNameSslStates": [
+          {
+            "name": "[concat(parameters('resourceName'), '.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Standard"
+          },
+          {
+            "name": "[concat(parameters('resourceName'), '.scm.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Repository"
+          }
+        ],
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('resourceName'))]",
+        "reserved": false,
+        "isXenon": false,
+        "hyperV": false,
+        "vnetRouteAllEnabled": false,
+        "vnetImagePullEnabled": false,
+        "vnetContentShareEnabled": false,
+        "siteConfig": {
+          "numberOfWorkers": 1,
+          "acrUseManagedIdentityCreds": false,
+          "alwaysOn": false,
+          "http20Enabled": false,
+          "functionAppScaleLimit": 0,
+          "minimumElasticInstanceCount": 0
+        },
+        "scmSiteAlsoStopped": false,
+        "clientAffinityEnabled": true,
+        "clientCertEnabled": false,
+        "clientCertMode": "Required",
+        "hostNamesDisabled": false,
+        "containerSize": 0,
+        "dailyMemoryTimeQuota": 0,
+        "httpsOnly": true,
+        "redundancyMode": "None",
+        "storageAccountRequired": false,
+        "keyVaultReferenceIdentity": "SystemAssigned"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('resourceName'), '/ftp')]",
+      "location": "East US",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
+      ],
+      "properties": {
+        "allow": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('resourceName'), '/scm')]",
+      "location": "East US",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
+      ],
+      "properties": {
+        "allow": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('resourceName'), '/web')]",
+      "location": "East US",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
+      ],
+      "properties": {
+        "numberOfWorkers": 1,
+        "defaultDocuments": [
+          "Default.htm",
+          "Default.html",
+          "Default.asp",
+          "index.htm",
+          "index.html",
+          "iisstart.htm",
+          "default.aspx",
+          "index.php",
+          "hostingstart.html"
+        ],
+        "netFrameworkVersion": "v6.0",
+        "phpVersion": "5.6",
+        "requestTracingEnabled": true,
+        "requestTracingExpirationTime": "9999-12-31T23:59:00Z",
+        "remoteDebuggingEnabled": false,
+        "remoteDebuggingVersion": "VS2019",
+        "httpLoggingEnabled": true,
+        "acrUseManagedIdentityCreds": false,
+        "logsDirectorySizeLimit": 35,
+        "detailedErrorLoggingEnabled": true,
+        "publishingUsername": "[concat('$',parameters('resourceName'))]",
+        "scmType": "None",
+        "use32BitWorkerProcess": false,
+        "webSocketsEnabled": false,
+        "alwaysOn": false,
+        "managedPipelineMode": "Integrated",
+        "virtualApplications": [
+          {
+            "virtualPath": "/",
+            "physicalPath": "site\\wwwroot",
+            "preloadEnabled": false
+          }
+        ],
+        "loadBalancing": "LeastRequests",
+        "experiments": {
+          "rampUpRules": []
+        },
+        "autoHealEnabled": false,
+        "vnetRouteAllEnabled": false,
+        "vnetPrivatePortsCount": 0,
+        "localMySqlEnabled": false,
+        "managedServiceIdentityId": 41302,
+        "ipSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 2147483647,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 2147483647,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictionsUseMain": false,
+        "http20Enabled": false,
+        "minTlsVersion": "1.2",
+        "scmMinTlsVersion": "1.2",
+        "ftpsState": "FtpsOnly",
+        "preWarmedInstanceCount": 0,
+        "elasticWebAppScaleLimit": 0,
+        "functionsRuntimeScaleMonitoringEnabled": false,
+        "minimumElasticInstanceCount": 0,
+        "azureStorageAccounts": {}
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('resourceName'), '/', parameters('resourceName'), '.azurewebsites.net')]",
+      "location": "East US",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
+      ],
+      "properties": {
+        "siteName": "[parameters('resourceName')]",
+        "hostNameType": "Verified"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/siteextensions",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('resourceName'), '/Microsoft.AspNetCore.AzureAppServices.SiteExtension')]",
+      "location": "East US",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('cleanResourceName'), '/default/logs')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('cleanResourceName'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
+      ],
+      "properties": {
+        "immutableStorageWithVersioning": {
+          "enabled": false
+        },
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "None"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2873 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Configuration>
+	<ViewDefinitions>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.ConferencingUser</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.ConferencingUser</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>AllowPstnOnlyMeeting</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>AllowTollFreeDialIn</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>BridgeId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>BridgeName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ConferenceId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DefaultTollFreeNumber</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DefaultTollNumber</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DisplayName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Identity</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>LeaderPin</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ServiceNumber</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>SipAddress</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>TenantId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>TollFreeServiceNumber</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Models.SimpleBatchJobStatus</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Models.SimpleBatchJobStatus</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>OperationId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>OperationName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>OverallStatus</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CreatedBy</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CreatedTime</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CompletedTime</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CompletedCount</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ErrorCount</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>InProgressCount</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>NotStartedCount</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Models.BatchJobStatus</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Models.BatchJobStatus</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>OperationId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>OperationName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>OverallStatus</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CreatedBy</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CreatedTime</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CompletedTime</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CompletedCount</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ErrorCount</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>InProgressCount</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>NotStartedCount</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>UserState</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Models.GroupAssignment</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Models.GroupAssignment</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>GroupId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PolicyType</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PolicyName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Priority</PropertyName>
+								<Label>Rank</Label>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CreatedTime</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CreatedBy</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Models.EffectivePolicy</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Models.EffectivePolicy</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>PolicyType</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PolicyName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>PolicySource</Label>
+								<ScriptBlock>[String]::Format("{0} {1}", $_.PolicySource[0].AssignmentType, $_.PolicySource[0].Reference)</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Models.SourceEntry</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Models.SourceEntry</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>AssignmentType</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PolicyType</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PolicyName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Reference</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>
+				Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.TeamTemplate
+			</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.TeamTemplate</TypeName>
+			</ViewSelectedBy>
+			<CustomControl>
+				<CustomEntries>
+					<CustomEntry>
+						<CustomItem>
+							<ExpressionBinding>
+								<ScriptBlock>$_.ToJsonString()</ScriptBlock>
+							</ExpressionBinding>
+						</CustomItem>
+					</CustomEntry>
+				</CustomEntries>
+			</CustomControl>
+		</View>
+		<View>
+			<Name>
+				Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.CreateTemplateResponse
+			</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.CreateTemplateResponse</TypeName>
+			</ViewSelectedBy>
+			<CustomControl>
+				<CustomEntries>
+					<CustomEntry>
+						<CustomItem>
+							<ExpressionBinding>
+								<ScriptBlock>$_.ToJsonString()</ScriptBlock>
+							</ExpressionBinding>
+						</CustomItem>
+					</CustomEntry>
+				</CustomEntries>
+			</CustomControl>
+		</View>
+		<View>
+			<Name>
+				Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.TeamTemplateErrorResponse
+			</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.TeamTemplateErrorResponse</TypeName>
+			</ViewSelectedBy>
+			<CustomControl>
+				<CustomEntries>
+					<CustomEntry>
+						<CustomItem>
+							<ExpressionBinding>
+								<ScriptBlock>$_.ToJsonString()</ScriptBlock>
+							</ExpressionBinding>
+						</CustomItem>
+					</CustomEntry>
+				</CustomEntries>
+			</CustomControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.CivicAddress</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.CivicAddress</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>TenantId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CivicAddressId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>HouseNumber</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>HouseNumberSuffix</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PreDirectional</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>StreetName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>StreetSuffix</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PostDirectional</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>City</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CityAlias</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PostalCode</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>StateOrProvince</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CountryOrRegion</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Description</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CompanyName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CompanyTaxId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DefaultLocationId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ValidationStatus</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>NumberOfVoiceUsers</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>NumberOfTelephoneNumbers</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ResultSize</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>NumberOfResultsToSkip</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Latitude</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Longitude</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Confidence</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Elin</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Force</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.LocationSchema</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.LocationSchema</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>TenantId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>LocationId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CivicAddressId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Location</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CompanyName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CompanyTaxId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>HouseNumber</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>HouseNumberSuffix</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PreDirectional</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>StreetName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>StreetSuffix</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PostDirectional</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>City</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CityAlias</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PostalCode</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>StateOrProvince</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CountryOrRegion</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Description</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ValidationStatus</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>NumberOfVoiceUsers</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>NumberOfTelephoneNumbers</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Latitude</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Longitude</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Confidence</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Elin</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ResultSize</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>NumberOfResultsToSkip</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Verb</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CorrelationId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Force</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.LocationInfo</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.LocationInfo</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>TenantId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>LocationId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CivicAddressId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Location</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CompanyName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CompanyTaxId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>HouseNumber</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>HouseNumberSuffix</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PreDirectional</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>StreetName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>StreetSuffix</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PostDirectional</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>City</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CityAlias</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PostalCode</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>StateOrProvince</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CountryOrRegion</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Description</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ValidationStatus</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>NumberOfVoiceUsers</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>NumberOfTelephoneNumbers</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Latitude</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Longitude</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Confidence</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Elin</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>ProcessedGetOnlineEnhancedEmergencyServiceDisclaimerResponse</Name>
+			<ViewSelectedBy>
+				<TypeName>ProcessedGetOnlineEnhancedEmergencyServiceDisclaimerResponse</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Content</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CorrelationId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Country</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Locale</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>RespondedByObjectId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Response</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ResponseTimestamp</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Version</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.GetApplicationInstanceAssociationResponse</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.GetApplicationInstanceAssociationResponse</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ConfigurationType</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ConfigurationId</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.SubnetResponse</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.SubnetResponse</TypeName>
+			</ViewSelectedBy>
+			<TableControl>
+				<TableRowEntries>
+					<TableRowEntry>
+						<TableColumnItems>
+							<TableColumnItem>
+								<PropertyName>Subnet</PropertyName>
+							</TableColumnItem>
+							<TableColumnItem>
+								<PropertyName>LocationId</PropertyName>
+							</TableColumnItem>
+							<TableColumnItem>
+								<PropertyName>Description</PropertyName>
+							</TableColumnItem>
+						</TableColumnItems>
+					</TableRowEntry>
+				</TableRowEntries>
+			</TableControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.SwitchResponse</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.SwitchResponse</TypeName>
+			</ViewSelectedBy>
+			<TableControl>
+				<TableRowEntries>
+					<TableRowEntry>
+						<TableColumnItems>
+							<TableColumnItem>
+								<PropertyName>ChassisID</PropertyName>
+							</TableColumnItem>
+							<TableColumnItem>
+								<PropertyName>LocationId</PropertyName>
+							</TableColumnItem>
+							<TableColumnItem>
+								<PropertyName>Description</PropertyName>
+							</TableColumnItem>
+						</TableColumnItems>
+					</TableRowEntry>
+				</TableRowEntries>
+			</TableControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.WaPResponse</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.WaPResponse</TypeName>
+			</ViewSelectedBy>
+			<TableControl>
+				<TableRowEntries>
+					<TableRowEntry>
+						<TableColumnItems>
+							<TableColumnItem>
+								<PropertyName>BSSID</PropertyName>
+							</TableColumnItem>
+							<TableColumnItem>
+								<PropertyName>LocationId</PropertyName>
+							</TableColumnItem>
+							<TableColumnItem>
+								<PropertyName>Description</PropertyName>
+							</TableColumnItem>
+						</TableColumnItems>
+					</TableRowEntry>
+				</TableRowEntries>
+			</TableControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.PortResponse</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.PortResponse</TypeName>
+			</ViewSelectedBy>
+			<TableControl>
+				<TableRowEntries>
+					<TableRowEntry>
+						<TableColumnItems>
+							<TableColumnItem>
+								<PropertyName>PortID</PropertyName>
+							</TableColumnItem>
+							<TableColumnItem>
+								<PropertyName>ChassisID</PropertyName>
+							</TableColumnItem>
+							<TableColumnItem>
+								<PropertyName>LocationId</PropertyName>
+							</TableColumnItem>
+							<TableColumnItem>
+								<PropertyName>Description</PropertyName>
+							</TableColumnItem>
+						</TableColumnItems>
+					</TableRowEntry>
+				</TableRowEntries>
+			</TableControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.ConferencingBridge</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.ConferencingBridge</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Identity</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Region</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DefaultServiceNumber</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>IsDefault</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ServiceNumbers</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.ConferencingServiceNumber</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.ConferencingServiceNumber</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Number</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>City</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PrimaryLanguage</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>SecondaryLanguages</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>BridgeId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>IsShared</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Type</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.ApplicationInstance</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.ApplicationInstance</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>TelephoneNumber</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>ProcessedGetApplicationInstanceAssociationStatusResponse</Name>
+			<ViewSelectedBy>
+				<TypeName>ProcessedGetApplicationInstanceAssociationStatusResponse</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Type</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Status</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>StatusCode</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Message</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>StatusTimestamp</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.ApiErrorItemAutoGenerated</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.ApiErrorItemAutoGenerated</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Message</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Code</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CorrelationId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>TimeStampUtc</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>InnerError</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Detail</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>AditionalDetail</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.SupportedLanguage</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.SupportedLanguage</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Code</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Rtc.Management.Hosted.Online.Models.AudioFile</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.Online.Models.AudioFile</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>FileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ApplicationId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>MarkedForDeletion</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Rtc.Management.Hosted.Online.Models.Prompt</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.Online.Models.Prompt</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>ActiveType</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>TextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>AudioFilePrompt</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Rtc.Management.Hosted.OAA.Models.CallableEntity</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.CallableEntity</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Type</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>EnableTranscription</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>EnableSharedVoicemailSystemPromptSuppression</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.TimeRange</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.TimeRange</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Start</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>End</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Rtc.Management.Hosted.Online.Models.DateTimeRange</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.Online.Models.DateTimeRange</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<Label>Start</Label>
+								<ScriptBlock>
+									if ($_.Start)
+									{
+										$_.Start.ToString("dd/MM/yyyy HH:mm")
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>End</Label>
+								<ScriptBlock>
+									if ($_.End)
+									{
+										$_.End.ToString("dd/MM/yyyy HH:mm")
+									}
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>FixedSchedule</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.Online.Models.FixedSchedule</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<Label>DateTimeRanges</Label>
+								<ScriptBlock>
+									if ($_.DateTimeRanges)
+									{
+									$formatString = "dd-MM-yyyy HH:mm"
+									$accumulator = @()
+									foreach($dtr in $_.DateTimeRanges)
+									{
+									$accumulator += $dtr.Start.ToString($formatString) + " - " + $dtr.End.ToString($formatString)
+									}
+									$accumulator -join ", "
+									}
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Rtc.Management.Hosted.Online.Models.WeeklyRecurrentSchedule</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.Online.Models.WeeklyRecurrentSchedule</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>ComplementEnabled</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>MondayHours</Label>
+								<ScriptBlock>
+									if ($_.MondayHours)
+									{
+									$accumulator = @()
+									foreach($tr in $_.MondayHours)
+									{
+									$accumulator += $tr.Start.ToString() + " - " + $tr.End.ToString()
+									}
+									$accumulator -join ", "
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>TuesdayHours</Label>
+								<ScriptBlock>
+									if ($_.TuesdayHours)
+									{
+									$accumulator = @()
+									foreach($tr in $_.TuesdayHours)
+									{
+									$accumulator += $tr.Start.ToString() + " - " + $tr.End.ToString()
+									}
+									$accumulator -join ", "
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>WednesdayHours</Label>
+								<ScriptBlock>
+									if ($_.WednesdayHours)
+									{
+									$accumulator = @()
+									foreach($tr in $_.WednesdayHours)
+									{
+									$accumulator += $tr.Start.ToString() + " - " + $tr.End.ToString()
+									}
+									$accumulator -join ", "
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>ThursdayHours</Label>
+								<ScriptBlock>
+									if ($_.ThursdayHours)
+									{
+									$accumulator = @()
+									foreach($tr in $_.ThursdayHours)
+									{
+									$accumulator += $tr.Start.ToString() + " - " + $tr.End.ToString()
+									}
+									$accumulator -join ", "
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>FridayHours</Label>
+								<ScriptBlock>
+									if ($_.FridayHours)
+									{
+									$accumulator = @()
+									foreach($tr in $_.FridayHours)
+									{
+									$accumulator += $tr.Start.ToString() + " - " + $tr.End.ToString()
+									}
+									$accumulator -join ", "
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>SaturdayHours</Label>
+								<ScriptBlock>
+									if ($_.SaturdayHours)
+									{
+									$accumulator = @()
+									foreach($tr in $_.SaturdayHours)
+									{
+									$accumulator += $tr.Start.ToString() + " - " + $tr.End.ToString()
+									}
+									$accumulator -join ", "
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>SundayHours</Label>
+								<ScriptBlock>
+									if ($_.SundayHours)
+									{
+									$accumulator = @()
+									foreach($tr in $_.SundayHours)
+									{
+									$accumulator += $tr.Start.ToString() + " - " + $tr.End.ToString()
+									}
+									$accumulator -join ", "
+									}
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Schedule</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.Online.Models.Schedule</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Type</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>WeeklyRecurrentSchedule</Label>
+								<ScriptBlock>
+									$accumulator = @()
+									if ($_.WeeklyRecurrentSchedule -ne $null -and $_.FixedSchedule -eq $null)
+									{
+									$accumulator += $_.WeeklyRecurrentSchedule
+									}
+									$accumulator -join ", "
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>FixedSchedule</Label>
+								<ScriptBlock>
+									$accumulator = @()
+									if ($_.FixedSchedule -ne $null)
+									{
+									$accumulator += $_.FixedSchedule
+									}
+									$accumulator -join ", "
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>AssociatedConfigurationIds</Label>
+								<ScriptBlock>$_.AssociatedConfigurationIds -join ', '</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>OaaHolidays</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.HolidayVisRecord</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Year</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>DateTimeRanges</Label>
+								<ScriptBlock>
+									if ($_.DateTimeRanges)
+									{
+									$accumulator = @()
+									foreach($dtr in $_.DateTimeRanges)
+									{
+									$accumulator += $dtr.Start + " - " + $dtr.End
+									}
+
+									$accumulator -join ", "
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>Greetings</Label>
+								<ScriptBlock>
+									if ($_.CallFlow.Greetings)
+									{
+									$accumulator = @()
+
+									foreach ($prompt in $_.CallFlow.Greetings)
+									{
+									if ($prompt.TextToSpeechPrompt)
+									{
+									$accumulator += ("TextToSpeechPrompt=" + $prompt.TextToSpeechPrompt)
+									}
+									elseif ($prompt.AudioFilePrompt)
+									{
+									if($prompt.AudioFilePrompt.FileName)
+									{
+									$accumulator += ("AudioFileName=" + $prompt.AudioFilePrompt.FileName)
+									}
+									else
+									{
+									$accumulator += ("AudioFileId=" + $prompt.AudioFilePrompt.Id)
+									}
+									}
+									}
+
+									$accumulator -join "`n"
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ForceListenMenuEnabled</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>CallAction</Label>
+								<ScriptBlock>
+									if ($_.CallFlow.Menu.MenuOptions)
+									{
+									$accumulator = @()
+
+									$menuOptions = $_.CallFlow.Menu.MenuOptions
+									foreach ($menuOption in $menuOptions)
+									{
+									if ($menuOption.Action -ne $null)
+									{
+									$menuOptionAction = $menuOption.Action.ToString()
+									} else
+									{
+									$menuOptionAction = ""
+									}
+									$str = ("Action=" + $menuOptionAction)
+									if ($menuOption.CallTarget)
+									{
+									$str += ("`n" + "TargetId=" + $menuOption.CallTarget.Id)
+									if ($menuOption.CallTarget.Type -ne $null)
+									{
+									$menuOptionCallTargetType = $menuOption.CallTarget.Type.ToString()
+									} else
+									{
+									$menuOptionCallTargetType = ""
+									}
+									$str += ("`n" + "TargetType=" + $menuOptionCallTargetType)
+									}
+
+									$accumulator += $str
+									}
+
+									$accumulator -join "`n`n"
+									}
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Language</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.Language</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DisplayName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Voices</Label>
+								<ScriptBlock>
+									if ($_.Voices)
+									{
+									foreach ($voice in $_.Voices)
+									{
+									$voice.Name
+									}
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>VoiceResponseSupported</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Menu</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.Menu</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Prompts</Label>
+								<ScriptBlock>
+									if ($_.Prompts)
+									{
+									$accumulator = @()
+
+									foreach ($prompt in $_.Prompts)
+									{
+									if ($prompt.TextToSpeechPrompt)
+									{
+									$accumulator += ("TextToSpeechPrompt=" + $prompt.TextToSpeechPrompt)
+									}
+									elseif ($prompt.AudioFilePrompt)
+									{
+									if($prompt.AudioFilePrompt.FileName)
+									{
+									$accumulator += ("AudioFileName=" + $prompt.AudioFilePrompt.FileName)
+									}
+									else
+									{
+									$accumulator += ("AudioFileId=" + $prompt.AudioFilePrompt.Id)
+									}
+									}
+									}
+
+									$accumulator -join ", "
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>MenuOptions</Label>
+								<ScriptBlock>
+									if ($_.MenuOptions)
+									{
+									$accumulator = @()
+
+									$menuOptions = $_.MenuOptions
+									foreach ($menuOption in $menuOptions)
+									{
+									if ($menuOption.Action -ne $null)
+									{
+									$menuOptionAction = $menuOption.Action.ToString()
+									} else
+									{
+									$menuOptionAction = ""
+									}
+									$str = ("Action = " + $menuOptionAction)
+									if ($menuOption.DtmfResponse -ne $null)
+									{
+									$menuOptionDtmfResponse = $menuOption.DtmfResponse.ToString()
+									} else
+									{
+									$menuOptionDtmfResponse = ""
+									}
+									$str += ("`n" + "DtmfResponse = " + $menuOptionDtmfResponse)
+									if ($menuOption.CallTarget)
+									{
+									if ($menuOption.CallTarget.Type -ne $null)
+									{
+									$menuOptionCallTargetType = $menuOption.CallTarget.Type.ToString()
+									}
+									else
+									{
+									$menuOptionCallTargetType = ""
+									}
+									$str += ("`n" + "Type = " + $menuOptionCallTargetType)
+									$str += ("`n" + "Id = " + $menuOption.CallTarget.Id)
+									}
+
+									$accumulator += $str
+									}
+
+									$accumulator -join "`n`n"
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DialByNameEnabled</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DirectorySearchMethod</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>MenuOption</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.MenuOption</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Action</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DtmfResponse</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>VoiceResponses</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>CallTarget</Label>
+								<ScriptBlock>
+									$accumulator = ""
+
+									if ($_.CallTarget)
+									{
+									if ($_.CallTarget.Type -ne $null)
+									{
+									$callTargetType = $_.CallTarget.Type.ToString()
+									} else
+									{
+									$callTargetType = ""
+									}
+									$accumulator += ("Type = " + $callTargetType)
+									$accumulator += ("`n" + "Id = " + $_.CallTarget.Id)								
+									}
+
+									$accumulator
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>Prompt</Label>
+								<ScriptBlock>
+									$accumulator = ""
+
+									if ($_.Prompt)
+									{
+									$prompt = $_.Prompt
+
+									if ($prompt.TextToSpeechPrompt)
+									{
+									$accumulator += ("TextToSpeechPrompt=" + $prompt.TextToSpeechPrompt)
+									}
+									elseif ($prompt.AudioFilePrompt)
+									{
+									if($prompt.AudioFilePrompt.FileName)
+									{
+									$accumulator += ("AudioFileName=" + $prompt.AudioFilePrompt.FileName)
+									}
+									else
+									{
+									$accumulator += ("AudioFileId=" + $prompt.AudioFilePrompt.Id)
+									}
+									}
+									}
+
+									$accumulator
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>CallFlow</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.CallFlow</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Greetings</Label>
+								<ScriptBlock>
+									if ($_.Greetings)
+									{
+									$accumulator = @()
+
+									foreach ($prompt in $_.Greetings)
+									{
+									if ($prompt.TextToSpeechPrompt)
+									{
+									$accumulator += ("TextToSpeechPrompt=" + $prompt.TextToSpeechPrompt)
+									}
+									elseif ($prompt.AudioFilePrompt)
+									{
+									if($prompt.AudioFilePrompt.FileName)
+									{
+									$accumulator += ("AudioFileName=" + $prompt.AudioFilePrompt.FileName)
+									}
+									else
+									{
+									$accumulator += ("AudioFileId=" + $prompt.AudioFilePrompt.Id)
+									}
+									}
+									}
+
+									$accumulator -join ", "
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>Menu</Label>
+								<ScriptBlock>
+									if ($_.Menu)
+									{
+									$_.Menu.Name
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ForceListenMenuEnabled</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Prompt</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.Prompt</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>ActiveType</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>TextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>AudioFilePrompt</Label>
+								<ScriptBlock>
+									if ($_.AudioFilePrompt)
+									{
+									if ($_.AudioFilePrompt.FileName)
+									{
+									"FileName=" + $_.AudioFilePrompt.FileName
+									}
+									else
+									{
+									"Id=" + $_.AudioFilePrompt.Id
+									}
+									}
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>DialScope</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.DialScope</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Type</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>GroupScope</Label>
+								<ScriptBlock>
+									if ($_.GroupScope)
+									{
+									$_.GroupScope.GroupIds
+									}
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>DirectoryLookupScope</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.DirectoryLookupScope</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<Label>InclusionScope</Label>
+								<ScriptBlock>
+									if ($_.InclusionScope)
+									{
+									if ($_.InclusionScope.Type -ne $null)
+									{
+									$inclusionScopeType = $_.InclusionScope.Type.ToString()
+									} else
+									{
+									$inclusionScopeType = ""
+									}
+									"Type=" + $inclusionScopeType
+									}
+									else
+									{
+									"Default"
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>ExclusionScope</Label>
+								<ScriptBlock>
+									if ($_.ExclusionScope)
+									{
+									if ($_.ExclusionScope.Type -ne $null)
+									{
+									$exclusionScopeType = $_.ExclusionScope.Type.ToString()
+									} else
+									{
+									$exclusionScopeType = ""
+									}
+									"Type=" + $exclusionScopeType
+									}
+									else
+									{
+									"Default"
+									}
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>AutoAttendant</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.AutoAttendant</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Identity</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>TenantId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>LanguageId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>VoiceId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>DefaultCallFlow</Label>
+								<ScriptBlock>
+									if ($_.DefaultCallFlow)
+									{
+									$_.DefaultCallFlow.Name
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>Operator</Label>
+								<ScriptBlock>
+									$accumulator = @()
+									if ($_.Operator)
+									{
+									$accumulator += ("ID=" + $_.Operator.Id)
+									if ($_.Operator.Type -ne $null)
+									{
+									$operatorType = $_.Operator.Type.ToString()
+									} else
+									{
+									$operatorType = ""
+									}
+									$accumulator += ("Type=" + $operatorType)
+									}
+									$accumulator -join ", "
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>TimeZoneId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>VoiceResponseEnabled</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>CallFlows</Label>
+								<ScriptBlock>
+									$accumulator = @()
+									if ($_.CallFlows)
+									{
+									foreach ($callFlow in $_.CallFlows)
+									{
+									$accumulator += $callFlow.Name
+									}
+									}
+									$accumulator -join ", "
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>Schedules</Label>
+								<ScriptBlock>
+									$accumulator = @()
+									if ($_.Schedules)
+									{
+									foreach ($schedule in $_.Schedules)
+									{
+									$accumulator += $schedule.Name
+									}
+									}
+									$accumulator -join ", "
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>CallHandlingAssociations</Label>
+								<ScriptBlock>
+									$accumulator = @()
+									if ($_.CallHandlingAssociations)
+									{
+									$groups = $_.CallHandlingAssociations | Group-Object -Property Type
+									foreach ($group in $groups)
+									{
+									$accumulator += $group.Name + "(" + $group.Count + ")"
+									}
+									}
+									$accumulator -join ", "
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>Status</Label>
+								<ScriptBlock>
+									if ($_.Status)
+									{
+									$statuses = $_.Status | Foreach-Object { $_.Status }
+									$sortedStatuses = $statuses | Sort-Object
+									$sortedStatuses | Select-Object -First 1
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DialByNameResourceId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>DirectoryLookupScope</Label>
+								<ScriptBlock>
+									$accumulator = @()
+									if ($_.DirectoryLookupScope)
+									{
+									if ($_.DirectoryLookupScope.InclusionScope)
+									{
+									$accumulator += "InclusionScope"
+									}
+									if ($_.DirectoryLookupScope.ExclusionScope)
+									{
+									$accumulator += "ExclusionScope"
+									}
+									}
+									$accumulator -join ", "
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ApplicationInstances</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>AuthorizedUsers</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>HideAuthorizedUsers</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Language</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.Language</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DisplayName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Voices</Label>
+								<ScriptBlock>
+									if ($_.Voices)
+									{
+									foreach ($voice in $_.Voices)
+									{
+									$voice.Name
+									}
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>VoiceResponseSupported</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>AssociationOperationOutput</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.Online.Models.AssociationOperationOutput</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<Label>Output</Label>
+								<ScriptBlock>
+									if($_.Results)
+									{
+									$accumulator = @()
+									foreach ($result in $_.Results)
+									{
+									$resultStatusStatus = ""
+									$resultStatusStatusCode = ""
+									if($result.Status)
+									{
+									if($result.Status.Status -ne $null)
+									{
+									$resultStatusStatus = $result.Status.Status.ToString()
+									}
+									if($result.Status.StatusCode -ne $null)
+									{
+									$resultStatusStatusCode = $result.Status.StatusCode.ToString()
+									}
+									}
+
+									if($result.Association)
+									{
+									if($resultStatusStatus -ne "Success")
+									{
+									$accumulator += ("Id:                   " + $result.Association.Id+"`n")
+									}
+									else
+									{
+									$accumulator += ("Id:                   " + $result.Association.Id+"`n")
+									$accumulator += ("Configuration Type:   " + $result.Association.ConfigurationType+"`n")
+									$accumulator += ("Configuration Id:     " + $result.Association.ConfigurationId+"`n")
+									}
+									} else
+									{
+									if($result.Status)
+									{
+									$accumulator += ("Id:                   " + $result.Status.Id+"`n")
+									}
+									}
+
+									if($result.Status)
+									{
+									$accumulator += ("Result:               " + $resultStatusStatus+"`n")
+									$accumulator += ("Status Code:          " + $resultStatusStatusCode+"`n")
+									$accumulator += ("Message:              " + $result.Status.Message+"`n")
+									}
+
+									$accumulator += "`n`n"
+									}
+
+									$accumulator -join ""
+									}
+								</ScriptBlock>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>TenantInformation</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.TenantInformation</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>DefaultLanguageId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DefaultTimeZoneId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>FlightedFeatures</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>CallQueue</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.CallQueue.Models.CallQueue</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<Label>TenantId</Label>
+								<PropertyName>TenantId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Name</Label>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Identity</Label>
+								<PropertyName>Identity</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>RoutingMethod</Label>
+								<PropertyName>RoutingMethod</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>DistributionLists</Label>
+								<ScriptBlock>
+									if($_.DistributionLists)
+									{
+									[string]::Join("`n", $_.DistributionLists)
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>Users</Label>
+								<ScriptBlock>
+									if($_.Users)
+									{
+									[string]::Join("`n", $_.Users)
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>DistributionListsLastExpanded</Label>
+								<PropertyName>DistributionListsLastExpanded</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Agents</Label>
+								<ScriptBlock>
+									if($_.Agents)
+									{
+									[string]::Join("`n", $_.Agents)
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>AllowOptOut</Label>
+								<PropertyName>AllowOptOut</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>ConferenceMode</Label>
+								<PropertyName>ConferenceMode</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>PresenceBasedRouting</Label>
+								<PropertyName>PresenceBasedRouting</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>AgentsCapped</Label>
+								<PropertyName>AgentsCapped</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>AgentsInSyncWithDistributionLists</Label>
+								<PropertyName>AgentsInSyncWithDistributionLists</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>AgentAlertTime</Label>
+								<PropertyName>AgentAlertTime</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>LanguageId</Label>
+								<PropertyName>LanguageId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowThreshold</Label>
+								<PropertyName>OverflowThreshold</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowAction</Label>
+								<PropertyName>OverflowAction</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowActionTarget</Label>
+								<PropertyName>OverflowActionTargetId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowSharedVoicemailTextToSpeechPrompt</Label>
+								<PropertyName>OverflowSharedVoicemailTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowSharedVoicemailAudioFilePrompt</Label>
+								<PropertyName>OverflowSharedVoicemailAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowSharedVoicemailAudioFilePromptFileName</Label>
+								<PropertyName>OverflowSharedVoicemailAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>EnableOverflowSharedVoicemailTranscription</Label>
+								<PropertyName>EnableOverflowSharedVoicemailTranscription</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>EnableOverflowSharedVoicemailSystemPromptSuppression</Label>
+								<PropertyName>EnableOverflowSharedVoicemailSystemPromptSuppression</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowDisconnectAudioFilePrompt</Label>
+								<PropertyName>OverflowDisconnectAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowDisconnectAudioFilePromptFileName</Label>
+								<PropertyName>OverflowDisconnectAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowDisconnectTextToSpeechPrompt</Label>
+								<PropertyName>OverflowDisconnectTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectPersonAudioFilePrompt</Label>
+								<PropertyName>OverflowRedirectPersonAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectPersonAudioFilePromptFileName</Label>
+								<PropertyName>OverflowRedirectPersonAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectPersonTextToSpeechPrompt</Label>
+								<PropertyName>OverflowRedirectPersonTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectVoiceAppAudioFilePrompt</Label>
+								<PropertyName>OverflowRedirectVoiceAppAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectVoiceAppAudioFilePromptFileName</Label>
+								<PropertyName>OverflowRedirectVoiceAppAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectVoiceAppTextToSpeechPrompt</Label>
+								<PropertyName>OverflowRedirectVoiceAppTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectPhoneNumberAudioFilePrompt</Label>
+								<PropertyName>OverflowRedirectPhoneNumberAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectPhoneNumberAudioFilePromptFileName</Label>
+								<PropertyName>OverflowRedirectPhoneNumberAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectPhoneNumberTextToSpeechPrompt</Label>
+								<PropertyName>OverflowRedirectPhoneNumberTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectVoicemailAudioFilePrompt</Label>
+								<PropertyName>OverflowRedirectVoicemailAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectVoicemailAudioFilePromptFileName</Label>
+								<PropertyName>OverflowRedirectVoicemailAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OverflowRedirectVoicemailTextToSpeechPrompt</Label>
+								<PropertyName>OverflowRedirectVoicemailTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutThreshold</Label>
+								<PropertyName>TimeoutThreshold</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutAction</Label>
+								<PropertyName>TimeoutAction</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutActionTarget</Label>
+								<PropertyName>TimeoutActionTargetId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutSharedVoicemailTextToSpeechPrompt</Label>
+								<PropertyName>TimeoutSharedVoicemailTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutSharedVoicemailAudioFilePrompt</Label>
+								<PropertyName>TimeoutSharedVoicemailAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutSharedVoicemailAudioFilePromptFileName</Label>
+								<PropertyName>TimeoutSharedVoicemailAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>EnableTimeoutSharedVoicemailTranscription</Label>
+								<PropertyName>EnableTimeoutSharedVoicemailTranscription</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>EnableTimeoutSharedVoicemailSystemPromptSuppression</Label>
+								<PropertyName>EnableTimeoutSharedVoicemailSystemPromptSuppression</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutDisconnectAudioFilePrompt</Label>
+								<PropertyName>TimeoutDisconnectAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutDisconnectAudioFilePromptFileName</Label>
+								<PropertyName>TimeoutDisconnectAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutDisconnectTextToSpeechPrompt</Label>
+								<PropertyName>TimeoutDisconnectTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectPersonAudioFilePrompt</Label>
+								<PropertyName>TimeoutRedirectPersonAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectPersonAudioFilePromptFileName</Label>
+								<PropertyName>TimeoutRedirectPersonAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectPersonTextToSpeechPrompt</Label>
+								<PropertyName>TimeoutRedirectPersonTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectVoiceAppAudioFilePrompt</Label>
+								<PropertyName>TimeoutRedirectVoiceAppAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectVoiceAppAudioFilePromptFileName</Label>
+								<PropertyName>TimeoutRedirectVoiceAppAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectVoiceAppTextToSpeechPrompt</Label>
+								<PropertyName>TimeoutRedirectVoiceAppTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectPhoneNumberAudioFilePrompt</Label>
+								<PropertyName>TimeoutRedirectPhoneNumberAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectPhoneNumberAudioFilePromptFileName</Label>
+								<PropertyName>TimeoutRedirectPhoneNumberAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectPhoneNumberTextToSpeechPrompt</Label>
+								<PropertyName>TimeoutRedirectPhoneNumberTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectVoicemailAudioFilePrompt</Label>
+								<PropertyName>TimeoutRedirectVoicemailAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectVoicemailAudioFilePromptFileName</Label>
+								<PropertyName>TimeoutRedirectVoicemailAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>TimeoutRedirectVoicemailTextToSpeechPrompt</Label>
+								<PropertyName>TimeoutRedirectVoicemailTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentDisconnectAudioFilePrompt</Label>
+								<PropertyName>NoAgentDisconnectAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentDisconnectAudioFilePromptFileName</Label>
+								<PropertyName>NoAgentDisconnectAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentDisconnectTextToSpeechPrompt</Label>
+								<PropertyName>NoAgentDisconnectTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectPersonAudioFilePrompt</Label>
+								<PropertyName>NoAgentRedirectPersonAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectPersonAudioFilePromptFileName</Label>
+								<PropertyName>NoAgentRedirectPersonAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectPersonTextToSpeechPrompt</Label>
+								<PropertyName>NoAgentRedirectPersonTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectVoiceAppAudioFilePrompt</Label>
+								<PropertyName>NoAgentRedirectVoiceAppAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectVoiceAppAudioFilePromptFileName</Label>
+								<PropertyName>NoAgentRedirectVoiceAppAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectVoiceAppTextToSpeechPrompt</Label>
+								<PropertyName>NoAgentRedirectVoiceAppTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectPhoneNumberAudioFilePrompt</Label>
+								<PropertyName>NoAgentRedirectPhoneNumberAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectPhoneNumberAudioFilePromptFileName</Label>
+								<PropertyName>NoAgentRedirectPhoneNumberAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectPhoneNumberTextToSpeechPrompt</Label>
+								<PropertyName>NoAgentRedirectPhoneNumberTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectVoicemailAudioFilePrompt</Label>
+								<PropertyName>NoAgentRedirectVoicemailAudioFilePrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectVoicemailAudioFilePromptFileName</Label>
+								<PropertyName>NoAgentRedirectVoicemailAudioFilePromptFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>NoAgentRedirectVoicemailTextToSpeechPrompt</Label>
+								<PropertyName>NoAgentRedirectVoicemailTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>WelcomeMusicFileName</Label>
+								<PropertyName>WelcomeMusicFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>WelcomeTextToSpeechPrompt</Label>
+								<PropertyName>WelcomeTextToSpeechPrompt</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>UseDefaultMusicOnHold</Label>
+								<PropertyName>UseDefaultMusicOnHold</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>MusicOnHoldFileName</Label>
+								<PropertyName>MusicOnHoldFileName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Statistics</Label>
+								<ScriptBlock>
+									if($_.Statistics)
+									{
+									[string]::Join("`n", $_.Statistics)
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>ApplicationInstances</Label>
+								<ScriptBlock>
+									if($_.ApplicationInstances)
+									{
+									[string]::Join("`n", $_.ApplicationInstances)
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>ChannelId</Label>
+								<PropertyName>ChannelId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>OboResourceAccounts</Label>
+								<ScriptBlock>
+									if($_.OboResourceAccounts)
+									{
+									[string]::Join("`n", $_.OboResourceAccounts)
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+                                <PropertyName>AuthorizedUsers</PropertyName>
+                            </ListItem>
+							<ListItem>
+								<PropertyName>HideAuthorizedUsers</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.UserRoutingSettings</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.UserRoutingSettings</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>SipUri</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>IsForwardingEnabled</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ForwardingType</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ForwardingTarget</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ForwardingTargetType</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>IsUnansweredEnabled</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>UnansweredTarget</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>UnansweredTargetType</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>UnansweredDelay</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>Delegates</Label>
+								<ScriptBlock>
+									if ($_.Delegates)
+									{
+									foreach ($delegate in $_.Delegates)
+									{
+									[String]::Format("Id:{0}", $delegate.Id)
+									}
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<Label>Delegators</Label>
+								<ScriptBlock>
+									if ($_.Delegators)
+									{
+									foreach ($delegator in $_.Delegators)
+									{
+									[String]::Format("Id:{0}", $delegator.Id)
+									}
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CallGroupOrder</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CallGroupTargets</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>GroupMembershipDetails</Label>
+								<ScriptBlock>
+									if ($_.GroupMembershipDetails)
+									{
+									foreach ($detail in $_.GroupMembershipDetails)
+									{
+									[String]::Format("CallGroupOwnerId:{0}", $detail.CallGroupOwnerId)
+									}
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>GroupNotificationOverride</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.DelegationDetail</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.DelegationDetail</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Id</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>MakeCalls</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ManageSettings</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ReceiveCalls</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.CallGroupMembershipDetail</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.CallGroupMembershipDetail</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>CallGroupOwnerId</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>NotificationSetting</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+		<View>
+			<Name>Microsoft.Rtc.Management.Hosted.OAA.Models.HolidayImportResult</Name>
+			<ViewSelectedBy>
+				<TypeName>Microsoft.Rtc.Management.Hosted.OAA.Models.HolidayImportResult</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>DateTimeRanges</Label>
+								<ScriptBlock>
+									if ($_.DateTimeRanges)
+									{
+										$accumulator = @()
+										foreach($dtr in $_.DateTimeRanges)
+										{
+											$accumulator += $dtr.Start.ToString() + " - " + $dtr.End.ToString()
+										}
+
+										$accumulator -join "`n"
+									}
+								</ScriptBlock>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Succeeded</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>FailureReason</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+    <View>
+      <Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.SkypeTelephoneNumberMgmtCmdletAcquiredTelephoneNumber</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.SkypeTelephoneNumberMgmtCmdletAcquiredTelephoneNumber</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>TelephoneNumber</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>NumberType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ActivationState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>AssignedPstnTargetId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Capability</PropertyName>
+              </ListItem>
+			  <ListItem>
+                <PropertyName>City</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>CivicAddressId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsoCountryCode</PropertyName>
+              </ListItem>
+			  <ListItem>
+                <PropertyName>IsoSubdivision</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>LocationId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>LocationUpdateSupported</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PortInOrderStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PstnAssignmentStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PstnPartnerId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PstnPartnerName</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+	<View>
+		<Name>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.VoicemailSettings</Name>
+		<ViewSelectedBy>
+			<TypeName>Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models.VoicemailSettings</TypeName>
+		</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>VoicemailEnabled</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>PromptLanguage</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>OofGreetingEnabled</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>OofGreetingFollowAutomaticRepliesEnabled</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>OofGreetingFollowCalendarEnabled</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ShareData</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>CallAnswerRule</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DefaultGreetingPromptOverwrite</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DefaultOofGreetingPromptOverwrite</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>TransferTarget</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
+	</ViewDefinitions>
+</Configuration>
+<!-- SIG # Begin signature block -->
+<!-- MIInkwYJKoZIhvcNAQcCoIInhDCCJ4ACAQExDzANBglghkgBZQMEAgEFADB5Bgor -->
+<!-- BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG -->
+<!-- KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCBlkdtrtW3w/F98 -->
+<!-- 73HsDqXXmJAAvXW2I/vWJX6K1yp+nKCCDXYwggX0MIID3KADAgECAhMzAAADTrU8 -->
+<!-- esGEb+srAAAAAANOMA0GCSqGSIb3DQEBCwUAMH4xCzAJBgNVBAYTAlVTMRMwEQYD -->
+<!-- VQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNy -->
+<!-- b3NvZnQgQ29ycG9yYXRpb24xKDAmBgNVBAMTH01pY3Jvc29mdCBDb2RlIFNpZ25p -->
+<!-- bmcgUENBIDIwMTEwHhcNMjMwMzE2MTg0MzI5WhcNMjQwMzE0MTg0MzI5WjB0MQsw -->
+<!-- CQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9u -->
+<!-- ZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMR4wHAYDVQQDExVNaWNy -->
+<!-- b3NvZnQgQ29ycG9yYXRpb24wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB -->
+<!-- AQDdCKiNI6IBFWuvJUmf6WdOJqZmIwYs5G7AJD5UbcL6tsC+EBPDbr36pFGo1bsU -->
+<!-- p53nRyFYnncoMg8FK0d8jLlw0lgexDDr7gicf2zOBFWqfv/nSLwzJFNP5W03DF/1 -->
+<!-- 1oZ12rSFqGlm+O46cRjTDFBpMRCZZGddZlRBjivby0eI1VgTD1TvAdfBYQe82fhm -->
+<!-- WQkYR/lWmAK+vW/1+bO7jHaxXTNCxLIBW07F8PBjUcwFxxyfbe2mHB4h1L4U0Ofa -->
+<!-- +HX/aREQ7SqYZz59sXM2ySOfvYyIjnqSO80NGBaz5DvzIG88J0+BNhOu2jl6Dfcq -->
+<!-- jYQs1H/PMSQIK6E7lXDXSpXzAgMBAAGjggFzMIIBbzAfBgNVHSUEGDAWBgorBgEE -->
+<!-- AYI3TAgBBggrBgEFBQcDAzAdBgNVHQ4EFgQUnMc7Zn/ukKBsBiWkwdNfsN5pdwAw -->
+<!-- RQYDVR0RBD4wPKQ6MDgxHjAcBgNVBAsTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEW -->
+<!-- MBQGA1UEBRMNMjMwMDEyKzUwMDUxNjAfBgNVHSMEGDAWgBRIbmTlUAXTgqoXNzci -->
+<!-- tW2oynUClTBUBgNVHR8ETTBLMEmgR6BFhkNodHRwOi8vd3d3Lm1pY3Jvc29mdC5j -->
+<!-- b20vcGtpb3BzL2NybC9NaWNDb2RTaWdQQ0EyMDExXzIwMTEtMDctMDguY3JsMGEG -->
+<!-- CCsGAQUFBwEBBFUwUzBRBggrBgEFBQcwAoZFaHR0cDovL3d3dy5taWNyb3NvZnQu -->
+<!-- Y29tL3BraW9wcy9jZXJ0cy9NaWNDb2RTaWdQQ0EyMDExXzIwMTEtMDctMDguY3J0 -->
+<!-- MAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggIBAD21v9pHoLdBSNlFAjmk -->
+<!-- mx4XxOZAPsVxxXbDyQv1+kGDe9XpgBnT1lXnx7JDpFMKBwAyIwdInmvhK9pGBa31 -->
+<!-- TyeL3p7R2s0L8SABPPRJHAEk4NHpBXxHjm4TKjezAbSqqbgsy10Y7KApy+9UrKa2 -->
+<!-- kGmsuASsk95PVm5vem7OmTs42vm0BJUU+JPQLg8Y/sdj3TtSfLYYZAaJwTAIgi7d -->
+<!-- hzn5hatLo7Dhz+4T+MrFd+6LUa2U3zr97QwzDthx+RP9/RZnur4inzSQsG5DCVIM -->
+<!-- pA1l2NWEA3KAca0tI2l6hQNYsaKL1kefdfHCrPxEry8onJjyGGv9YKoLv6AOO7Oh -->
+<!-- JEmbQlz/xksYG2N/JSOJ+QqYpGTEuYFYVWain7He6jgb41JbpOGKDdE/b+V2q/gX -->
+<!-- UgFe2gdwTpCDsvh8SMRoq1/BNXcr7iTAU38Vgr83iVtPYmFhZOVM0ULp/kKTVoir -->
+<!-- IpP2KCxT4OekOctt8grYnhJ16QMjmMv5o53hjNFXOxigkQWYzUO+6w50g0FAeFa8 -->
+<!-- 5ugCCB6lXEk21FFB1FdIHpjSQf+LP/W2OV/HfhC3uTPgKbRtXo83TZYEudooyZ/A -->
+<!-- Vu08sibZ3MkGOJORLERNwKm2G7oqdOv4Qj8Z0JrGgMzj46NFKAxkLSpE5oHQYP1H -->
+<!-- tPx1lPfD7iNSbJsP6LiUHXH1MIIHejCCBWKgAwIBAgIKYQ6Q0gAAAAAAAzANBgkq -->
+<!-- hkiG9w0BAQsFADCBiDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24x -->
+<!-- EDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlv -->
+<!-- bjEyMDAGA1UEAxMpTWljcm9zb2Z0IFJvb3QgQ2VydGlmaWNhdGUgQXV0aG9yaXR5 -->
+<!-- IDIwMTEwHhcNMTEwNzA4MjA1OTA5WhcNMjYwNzA4MjEwOTA5WjB+MQswCQYDVQQG -->
+<!-- EwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwG -->
+<!-- A1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSgwJgYDVQQDEx9NaWNyb3NvZnQg -->
+<!-- Q29kZSBTaWduaW5nIFBDQSAyMDExMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIIC -->
+<!-- CgKCAgEAq/D6chAcLq3YbqqCEE00uvK2WCGfQhsqa+laUKq4BjgaBEm6f8MMHt03 -->
+<!-- a8YS2AvwOMKZBrDIOdUBFDFC04kNeWSHfpRgJGyvnkmc6Whe0t+bU7IKLMOv2akr -->
+<!-- rnoJr9eWWcpgGgXpZnboMlImEi/nqwhQz7NEt13YxC4Ddato88tt8zpcoRb0Rrrg -->
+<!-- OGSsbmQ1eKagYw8t00CT+OPeBw3VXHmlSSnnDb6gE3e+lD3v++MrWhAfTVYoonpy -->
+<!-- 4BI6t0le2O3tQ5GD2Xuye4Yb2T6xjF3oiU+EGvKhL1nkkDstrjNYxbc+/jLTswM9 -->
+<!-- sbKvkjh+0p2ALPVOVpEhNSXDOW5kf1O6nA+tGSOEy/S6A4aN91/w0FK/jJSHvMAh -->
+<!-- dCVfGCi2zCcoOCWYOUo2z3yxkq4cI6epZuxhH2rhKEmdX4jiJV3TIUs+UsS1Vz8k -->
+<!-- A/DRelsv1SPjcF0PUUZ3s/gA4bysAoJf28AVs70b1FVL5zmhD+kjSbwYuER8ReTB -->
+<!-- w3J64HLnJN+/RpnF78IcV9uDjexNSTCnq47f7Fufr/zdsGbiwZeBe+3W7UvnSSmn -->
+<!-- Eyimp31ngOaKYnhfsi+E11ecXL93KCjx7W3DKI8sj0A3T8HhhUSJxAlMxdSlQy90 -->
+<!-- lfdu+HggWCwTXWCVmj5PM4TasIgX3p5O9JawvEagbJjS4NaIjAsCAwEAAaOCAe0w -->
+<!-- ggHpMBAGCSsGAQQBgjcVAQQDAgEAMB0GA1UdDgQWBBRIbmTlUAXTgqoXNzcitW2o -->
+<!-- ynUClTAZBgkrBgEEAYI3FAIEDB4KAFMAdQBiAEMAQTALBgNVHQ8EBAMCAYYwDwYD -->
+<!-- VR0TAQH/BAUwAwEB/zAfBgNVHSMEGDAWgBRyLToCMZBDuRQFTuHqp8cx0SOJNDBa -->
+<!-- BgNVHR8EUzBRME+gTaBLhklodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpL2Ny -->
+<!-- bC9wcm9kdWN0cy9NaWNSb29DZXJBdXQyMDExXzIwMTFfMDNfMjIuY3JsMF4GCCsG -->
+<!-- AQUFBwEBBFIwUDBOBggrBgEFBQcwAoZCaHR0cDovL3d3dy5taWNyb3NvZnQuY29t -->
+<!-- L3BraS9jZXJ0cy9NaWNSb29DZXJBdXQyMDExXzIwMTFfMDNfMjIuY3J0MIGfBgNV -->
+<!-- HSAEgZcwgZQwgZEGCSsGAQQBgjcuAzCBgzA/BggrBgEFBQcCARYzaHR0cDovL3d3 -->
+<!-- dy5taWNyb3NvZnQuY29tL3BraW9wcy9kb2NzL3ByaW1hcnljcHMuaHRtMEAGCCsG -->
+<!-- AQUFBwICMDQeMiAdAEwAZQBnAGEAbABfAHAAbwBsAGkAYwB5AF8AcwB0AGEAdABl -->
+<!-- AG0AZQBuAHQALiAdMA0GCSqGSIb3DQEBCwUAA4ICAQBn8oalmOBUeRou09h0ZyKb -->
+<!-- C5YR4WOSmUKWfdJ5DJDBZV8uLD74w3LRbYP+vj/oCso7v0epo/Np22O/IjWll11l -->
+<!-- hJB9i0ZQVdgMknzSGksc8zxCi1LQsP1r4z4HLimb5j0bpdS1HXeUOeLpZMlEPXh6 -->
+<!-- I/MTfaaQdION9MsmAkYqwooQu6SpBQyb7Wj6aC6VoCo/KmtYSWMfCWluWpiW5IP0 -->
+<!-- wI/zRive/DvQvTXvbiWu5a8n7dDd8w6vmSiXmE0OPQvyCInWH8MyGOLwxS3OW560 -->
+<!-- STkKxgrCxq2u5bLZ2xWIUUVYODJxJxp/sfQn+N4sOiBpmLJZiWhub6e3dMNABQam -->
+<!-- ASooPoI/E01mC8CzTfXhj38cbxV9Rad25UAqZaPDXVJihsMdYzaXht/a8/jyFqGa -->
+<!-- J+HNpZfQ7l1jQeNbB5yHPgZ3BtEGsXUfFL5hYbXw3MYbBL7fQccOKO7eZS/sl/ah -->
+<!-- XJbYANahRr1Z85elCUtIEJmAH9AAKcWxm6U/RXceNcbSoqKfenoi+kiVH6v7RyOA -->
+<!-- 9Z74v2u3S5fi63V4GuzqN5l5GEv/1rMjaHXmr/r8i+sLgOppO6/8MO0ETI7f33Vt -->
+<!-- Y5E90Z1WTk+/gFcioXgRMiF670EKsT/7qMykXcGhiJtXcVZOSEXAQsmbdlsKgEhr -->
+<!-- /Xmfwb1tbWrJUnMTDXpQzTGCGXMwghlvAgEBMIGVMH4xCzAJBgNVBAYTAlVTMRMw -->
+<!-- EQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVN -->
+<!-- aWNyb3NvZnQgQ29ycG9yYXRpb24xKDAmBgNVBAMTH01pY3Jvc29mdCBDb2RlIFNp -->
+<!-- Z25pbmcgUENBIDIwMTECEzMAAANOtTx6wYRv6ysAAAAAA04wDQYJYIZIAWUDBAIB -->
+<!-- BQCgga4wGQYJKoZIhvcNAQkDMQwGCisGAQQBgjcCAQQwHAYKKwYBBAGCNwIBCzEO -->
+<!-- MAwGCisGAQQBgjcCARUwLwYJKoZIhvcNAQkEMSIEIAIR+s9fKuJaMb8xhEjNBN4D -->
+<!-- U+5m0EBJC+iDwbtqniCQMEIGCisGAQQBgjcCAQwxNDAyoBSAEgBNAGkAYwByAG8A -->
+<!-- cwBvAGYAdKEagBhodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20wDQYJKoZIhvcNAQEB -->
+<!-- BQAEggEAS6Z0TghWOkx013LqqzE5Tf13I+H6ENJQezm+v1Km8QFIZivFSoAhSoym -->
+<!-- DLtlBLxova65J66LSQQPojtj8wu4AyR8kYs0NJ+QvRLuXWalBAz7h5NOjqO+zFml -->
+<!-- qWq57xL4zICtBQKB/mCT1Wcqg3iUlTftVpglKmitcw+qZo/ULNSVXOxLNyauGEjd -->
+<!-- lPDHTB4Hw8nypwCughYBROOSJRqSpv24FoVMGEMsvve0+S9uJ3yFKNW4emwADu/a -->
+<!-- hrhUPH64W5gOS+j+Rpih5d8ptyw4WRtOlMfjTc+IQj/EN3+UYUUGR3ZjMWb5pNS/ -->
+<!-- 9pVTd7nMlNQ93MmfU0U8dbac6jf8t6GCFv0wghb5BgorBgEEAYI3AwMBMYIW6TCC -->
+<!-- FuUGCSqGSIb3DQEHAqCCFtYwghbSAgEDMQ8wDQYJYIZIAWUDBAIBBQAwggFRBgsq -->
+<!-- hkiG9w0BCRABBKCCAUAEggE8MIIBOAIBAQYKKwYBBAGEWQoDATAxMA0GCWCGSAFl -->
+<!-- AwQCAQUABCCaTPnADfCvgH77Y7+9vS+S301rI/TqlMr6TItGiiWXjwIGZF0nbkKB -->
+<!-- GBMyMDIzMDUxMjEzMTYwOC4xMzhaMASAAgH0oIHQpIHNMIHKMQswCQYDVQQGEwJV -->
+<!-- UzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UE -->
+<!-- ChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSUwIwYDVQQLExxNaWNyb3NvZnQgQW1l -->
+<!-- cmljYSBPcGVyYXRpb25zMSYwJAYDVQQLEx1UaGFsZXMgVFNTIEVTTjo0OUJDLUUz -->
+<!-- N0EtMjMzQzElMCMGA1UEAxMcTWljcm9zb2Z0IFRpbWUtU3RhbXAgU2VydmljZaCC -->
+<!-- EVQwggcMMIIE9KADAgECAhMzAAABwFWkjcNkFcVLAAEAAAHAMA0GCSqGSIb3DQEB -->
+<!-- CwUAMHwxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQH -->
+<!-- EwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xJjAkBgNV -->
+<!-- BAMTHU1pY3Jvc29mdCBUaW1lLVN0YW1wIFBDQSAyMDEwMB4XDTIyMTEwNDE5MDEy -->
+<!-- NVoXDTI0MDIwMjE5MDEyNVowgcoxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNo -->
+<!-- aW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29y -->
+<!-- cG9yYXRpb24xJTAjBgNVBAsTHE1pY3Jvc29mdCBBbWVyaWNhIE9wZXJhdGlvbnMx -->
+<!-- JjAkBgNVBAsTHVRoYWxlcyBUU1MgRVNOOjQ5QkMtRTM3QS0yMzNDMSUwIwYDVQQD -->
+<!-- ExxNaWNyb3NvZnQgVGltZS1TdGFtcCBTZXJ2aWNlMIICIjANBgkqhkiG9w0BAQEF -->
+<!-- AAOCAg8AMIICCgKCAgEAvO1g+2NhhmBQvlGlCTOMaFw3jbIhUdDTqkaQhRpdHVb+ -->
+<!-- huU/0HNhLmoRYvrp7z5vIoL1MPAkVBFWJIkrcG7sSrednyZwreY207C9n8XivL9Z -->
+<!-- BOQeiUeL/TMlJ6VinrcafbhdnkNO5JDlPozC9dGySiubryds5GKtu69D1wNat9DI -->
+<!-- Ql6alFO6pncZK4RIzfv+KzkM7RkY3vHphV0C8EFUpF+lysaGJXFf9QsUUHwj9XKW -->
+<!-- Hfc9BfhLoCReXUzvgrspdFmVnA9ATYXmidSjrshf8A+E0/FpTdhXPI9XXqsZDHBq -->
+<!-- r7DlYoSCU3lvrVDRu1p5pHHf7s3kM16HpK6arDtY3ai1soASmEpv3C2N/y5MDBAp -->
+<!-- Dd4SpSkLMa7+6es/daeS7zdH1qdCa2RoJPM6Eh/6YmBfofhfLQofKPJl34ALlZWK -->
+<!-- 5AzVtFRNOXacoj6MAG2dT8Rc5fpKCH1E3n7Zje0dK24QVfSv/YOxw52ECaMLlW5P -->
+<!-- hHT3ZINNaCmRgcHCTClOKzC2FOr03YBc2zPOW6bIVdXloPmBMVaE+thXqPmANBw0 -->
+<!-- YsncaOkVggjDb5O5VqOp98MklHpJoJI6pk5zAlx8/OtC7FutrdtYNUC6ykXzMAPF -->
+<!-- uYkWGgx/W7A0itKW8WzYzwO3bAhprwznouGZmRiw2k8pen80BzqzdyPvbzTxQsMC -->
+<!-- AwEAAaOCATYwggEyMB0GA1UdDgQWBBQARMZ480jwpK3P6quVWUEJ0c30hTAfBgNV -->
+<!-- HSMEGDAWgBSfpxVdAF5iXYP05dJlpxtTNRnpcjBfBgNVHR8EWDBWMFSgUqBQhk5o -->
+<!-- dHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpb3BzL2NybC9NaWNyb3NvZnQlMjBU -->
+<!-- aW1lLVN0YW1wJTIwUENBJTIwMjAxMCgxKS5jcmwwbAYIKwYBBQUHAQEEYDBeMFwG -->
+<!-- CCsGAQUFBzAChlBodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpb3BzL2NlcnRz -->
+<!-- L01pY3Jvc29mdCUyMFRpbWUtU3RhbXAlMjBQQ0ElMjAyMDEwKDEpLmNydDAMBgNV -->
+<!-- HRMBAf8EAjAAMBMGA1UdJQQMMAoGCCsGAQUFBwMIMA0GCSqGSIb3DQEBCwUAA4IC -->
+<!-- AQCtTh0EQn16kKQyCeVk9Vc10m6L0EwLRo3ATRouP7Yd2hWeEB2Y4ZF4CJKe9qfX -->
+<!-- WGJKzV7tMUm6DAsBKYH/nT+8ybI8uJiHGnfnVi6Sh7gFjnTpfh1j1T90H/uLeoFj -->
+<!-- pOn/+eoCoJmorW5Gb2ezlTlo5I0kNAubxtCxqbLizuPNPob8kRAKQgv+4/CC1Jmi -->
+<!-- UFG0uKINlKj9SsHcrWeBBQHX62nNgziIwT44JqHrA02I6cmQAi9BZcsf57OOLpRY -->
+<!-- lzoPH3x/+ldSySXAmyLq2uSbWtQuD84I/0ZgS/B5L3ewqTdiE1KbKX89MW5JqCK/ -->
+<!-- yI/mAIQammAlHPqU9eZZTMPOHQs0XrpCijlk+qyo2JaHiySww6nuPqXzU3sEj3VW -->
+<!-- 00YiVSayKEu1IrRzzX3La8qe6OqLTvK/6gu5XdKq7TT852nB6IP0QM+Budtr4Fbx -->
+<!-- 4/svpKHGpK9/zBuaHHDXX5AoSksh/kSDYKfefQIhIfQJJzoE3X+MimMJrgrwZXlt -->
+<!-- b6j1IL0HY3qCpa03Ghgi0ITzqfkw3Man3G8kB1Ql+SeNciPUj73Kn2veJenGLtT8 -->
+<!-- JkUM9RUi0woO0iuY4tJnYuS+SeqavXUOWqUYVY19FIr1PLqpmWkbrO5xKjkyOHoA -->
+<!-- mLxjNbKjOnkAwft+1G00kulKqzqPbm+Sn+47JsGQFhNGbTCCB3EwggVZoAMCAQIC -->
+<!-- EzMAAAAVxedrngKbSZkAAAAAABUwDQYJKoZIhvcNAQELBQAwgYgxCzAJBgNVBAYT -->
+<!-- AlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYD -->
+<!-- VQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xMjAwBgNVBAMTKU1pY3Jvc29mdCBS -->
+<!-- b290IENlcnRpZmljYXRlIEF1dGhvcml0eSAyMDEwMB4XDTIxMDkzMDE4MjIyNVoX -->
+<!-- DTMwMDkzMDE4MzIyNVowfDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0 -->
+<!-- b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3Jh -->
+<!-- dGlvbjEmMCQGA1UEAxMdTWljcm9zb2Z0IFRpbWUtU3RhbXAgUENBIDIwMTAwggIi -->
+<!-- MA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDk4aZM57RyIQt5osvXJHm9DtWC -->
+<!-- 0/3unAcH0qlsTnXIyjVX9gF/bErg4r25PhdgM/9cT8dm95VTcVrifkpa/rg2Z4VG -->
+<!-- Iwy1jRPPdzLAEBjoYH1qUoNEt6aORmsHFPPFdvWGUNzBRMhxXFExN6AKOG6N7dcP -->
+<!-- 2CZTfDlhAnrEqv1yaa8dq6z2Nr41JmTamDu6GnszrYBbfowQHJ1S/rboYiXcag/P -->
+<!-- XfT+jlPP1uyFVk3v3byNpOORj7I5LFGc6XBpDco2LXCOMcg1KL3jtIckw+DJj361 -->
+<!-- VI/c+gVVmG1oO5pGve2krnopN6zL64NF50ZuyjLVwIYwXE8s4mKyzbnijYjklqwB -->
+<!-- Sru+cakXW2dg3viSkR4dPf0gz3N9QZpGdc3EXzTdEonW/aUgfX782Z5F37ZyL9t9 -->
+<!-- X4C626p+Nuw2TPYrbqgSUei/BQOj0XOmTTd0lBw0gg/wEPK3Rxjtp+iZfD9M269e -->
+<!-- wvPV2HM9Q07BMzlMjgK8QmguEOqEUUbi0b1qGFphAXPKZ6Je1yh2AuIzGHLXpyDw -->
+<!-- wvoSCtdjbwzJNmSLW6CmgyFdXzB0kZSU2LlQ+QuJYfM2BjUYhEfb3BvR/bLUHMVr -->
+<!-- 9lxSUV0S2yW6r1AFemzFER1y7435UsSFF5PAPBXbGjfHCBUYP3irRbb1Hode2o+e -->
+<!-- FnJpxq57t7c+auIurQIDAQABo4IB3TCCAdkwEgYJKwYBBAGCNxUBBAUCAwEAATAj -->
+<!-- BgkrBgEEAYI3FQIEFgQUKqdS/mTEmr6CkTxGNSnPEP8vBO4wHQYDVR0OBBYEFJ+n -->
+<!-- FV0AXmJdg/Tl0mWnG1M1GelyMFwGA1UdIARVMFMwUQYMKwYBBAGCN0yDfQEBMEEw -->
+<!-- PwYIKwYBBQUHAgEWM2h0dHA6Ly93d3cubWljcm9zb2Z0LmNvbS9wa2lvcHMvRG9j -->
+<!-- cy9SZXBvc2l0b3J5Lmh0bTATBgNVHSUEDDAKBggrBgEFBQcDCDAZBgkrBgEEAYI3 -->
+<!-- FAIEDB4KAFMAdQBiAEMAQTALBgNVHQ8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAf -->
+<!-- BgNVHSMEGDAWgBTV9lbLj+iiXGJo0T2UkFvXzpoYxDBWBgNVHR8ETzBNMEugSaBH -->
+<!-- hkVodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpL2NybC9wcm9kdWN0cy9NaWNS -->
+<!-- b29DZXJBdXRfMjAxMC0wNi0yMy5jcmwwWgYIKwYBBQUHAQEETjBMMEoGCCsGAQUF -->
+<!-- BzAChj5odHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpL2NlcnRzL01pY1Jvb0Nl -->
+<!-- ckF1dF8yMDEwLTA2LTIzLmNydDANBgkqhkiG9w0BAQsFAAOCAgEAnVV9/Cqt4Swf -->
+<!-- ZwExJFvhnnJL/Klv6lwUtj5OR2R4sQaTlz0xM7U518JxNj/aZGx80HU5bbsPMeTC -->
+<!-- j/ts0aGUGCLu6WZnOlNN3Zi6th542DYunKmCVgADsAW+iehp4LoJ7nvfam++Kctu -->
+<!-- 2D9IdQHZGN5tggz1bSNU5HhTdSRXud2f8449xvNo32X2pFaq95W2KFUn0CS9QKC/ -->
+<!-- GbYSEhFdPSfgQJY4rPf5KYnDvBewVIVCs/wMnosZiefwC2qBwoEZQhlSdYo2wh3D -->
+<!-- YXMuLGt7bj8sCXgU6ZGyqVvfSaN0DLzskYDSPeZKPmY7T7uG+jIa2Zb0j/aRAfbO -->
+<!-- xnT99kxybxCrdTDFNLB62FD+CljdQDzHVG2dY3RILLFORy3BFARxv2T5JL5zbcqO -->
+<!-- Cb2zAVdJVGTZc9d/HltEAY5aGZFrDZ+kKNxnGSgkujhLmm77IVRrakURR6nxt67I -->
+<!-- 6IleT53S0Ex2tVdUCbFpAUR+fKFhbHP+CrvsQWY9af3LwUFJfn6Tvsv4O+S3Fb+0 -->
+<!-- zj6lMVGEvL8CwYKiexcdFYmNcP7ntdAoGokLjzbaukz5m/8K6TT4JDVnK+ANuOaM -->
+<!-- mdbhIurwJ0I9JZTmdHRbatGePu1+oDEzfbzL6Xu/OHBE0ZDxyKs6ijoIYn/ZcGNT -->
+<!-- TY3ugm2lBRDBcQZqELQdVTNYs6FwZvKhggLLMIICNAIBATCB+KGB0KSBzTCByjEL -->
+<!-- MAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1v -->
+<!-- bmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjElMCMGA1UECxMcTWlj -->
+<!-- cm9zb2Z0IEFtZXJpY2EgT3BlcmF0aW9uczEmMCQGA1UECxMdVGhhbGVzIFRTUyBF -->
+<!-- U046NDlCQy1FMzdBLTIzM0MxJTAjBgNVBAMTHE1pY3Jvc29mdCBUaW1lLVN0YW1w -->
+<!-- IFNlcnZpY2WiIwoBATAHBgUrDgMCGgMVABAQ7ExF19KkwVL1E3Ad8k0Peb6doIGD -->
+<!-- MIGApH4wfDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNV -->
+<!-- BAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEmMCQG -->
+<!-- A1UEAxMdTWljcm9zb2Z0IFRpbWUtU3RhbXAgUENBIDIwMTAwDQYJKoZIhvcNAQEF -->
+<!-- BQACBQDoCE6qMCIYDzIwMjMwNTEyMTMzNTM4WhgPMjAyMzA1MTMxMzM1MzhaMHQw -->
+<!-- OgYKKwYBBAGEWQoEATEsMCowCgIFAOgITqoCAQAwBwIBAAICGHowBwIBAAICEa8w -->
+<!-- CgIFAOgJoCoCAQAwNgYKKwYBBAGEWQoEAjEoMCYwDAYKKwYBBAGEWQoDAqAKMAgC -->
+<!-- AQACAwehIKEKMAgCAQACAwGGoDANBgkqhkiG9w0BAQUFAAOBgQA+y0TBHt1CWE+E -->
+<!-- 5usaztkMo61CWV17tJyFyyVZNWrQr425Hj1oRwydzthn02GC31kqI98oBQrErCeC -->
+<!-- PIDmMC5SGCMBSxRd66wbYqTy2jHrUFUGbL1T7ASX8GJss4a1gCERQgAUc361aN0s -->
+<!-- Xpgn4Lr1cLGG+cArDH/LYHL820ST+DGCBA0wggQJAgEBMIGTMHwxCzAJBgNVBAYT -->
+<!-- AlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYD -->
+<!-- VQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xJjAkBgNVBAMTHU1pY3Jvc29mdCBU -->
+<!-- aW1lLVN0YW1wIFBDQSAyMDEwAhMzAAABwFWkjcNkFcVLAAEAAAHAMA0GCWCGSAFl -->
+<!-- AwQCAQUAoIIBSjAaBgkqhkiG9w0BCQMxDQYLKoZIhvcNAQkQAQQwLwYJKoZIhvcN -->
+<!-- AQkEMSIEIPLlIBMDsqxxN3sEgR3JR/SFzS4JSJ7VO7HJJagSx1nkMIH6BgsqhkiG -->
+<!-- 9w0BCRACLzGB6jCB5zCB5DCBvQQgWvFYolIIXME0zK/W6XsCkkYX7lYNb9yA8Jxw -->
+<!-- Y04Pk08wgZgwgYCkfjB8MQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3Rv -->
+<!-- bjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0 -->
+<!-- aW9uMSYwJAYDVQQDEx1NaWNyb3NvZnQgVGltZS1TdGFtcCBQQ0EgMjAxMAITMwAA -->
+<!-- AcBVpI3DZBXFSwABAAABwDAiBCArcUTzSaX8EEJZxcijhIxi1IBzblx+RTy0q5r4 -->
+<!-- PwbkqDANBgkqhkiG9w0BAQsFAASCAgB0aFra85E3JQL4ChLC2y6eDC9GIp8HPpK8 -->
+<!-- 0WmJ6Zcehu3beLJuVa8iU/F9xvBPXobk6TNJ2Vg5bXy2qWmmzThcQ+5K64d0/XIA -->
+<!-- fxBU5NPC4yyEM8DXF/NZTxG7vgOfbgFeXn/5tJt3vKbpanK4gFi2TA6yWEOUUkdr -->
+<!-- bs7N3HHDsj9RNDt4TQveLlsmmjLf8NbntlVFlDJ+D/W6lMtxBfzbdqYsvKcZk9AT -->
+<!-- lIL31Zc8RUT2eL/mQHQqIsizodIOxyuLnM/DFNaXziUbjVxH7VjQeLj96f+bUOGZ -->
+<!-- HDpjsOk8UWyM+OhdO4cx7Sglu35YbEJIKPZ6uyhShhBR5SkPJ0nf1GNVeisBm7vn -->
+<!-- No2vjlyb5TKEO/wA37CdeIbeDsxv7TWmyzQ8GC+rw3hFsiiwvNtp1+EJKMbVQjTh -->
+<!-- 3FjnA5lK5LGLSSHMMJYb9T9WJJlMjJldxK/XITSz7nkrLsGX4FRYmR4cQOc6sjkb -->
+<!-- wjIImiV3V7nEdXMPmhRwUaRIfKv0RyIG+S0MVl9BgyV1koWTXVxICfRJZWZEdXr8 -->
+<!-- aACwBQdmLSo/BmKU6Xn7jVxwunOWnqA06Z150RTYqzxazvuN5fnV8HFu/FnYLQoF -->
+<!-- afAEG1iwimaskDkTbPQ24A2vDjd7WAJjjdJJ3dsuCjnIvCT8JULUE18xQQA+jWUV -->
+<!-- 27gjlDnI0g== -->
+<!-- SIG # End signature block -->
