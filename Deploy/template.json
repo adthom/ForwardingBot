@@ -15,7 +15,7 @@
       "type": "String"
     },
     "location": {
-      "defaultValue": "eastus",
+      "defaultValue": "[resourcegroup().location]",
       "type": "String"
     }
   },
@@ -94,7 +94,7 @@
       "type": "Microsoft.Web/serverfarms",
       "apiVersion": "2022-09-01",
       "name": "[parameters('resourceName')]",
-      "location": "East US",
+      "location": "[parameters('location')]",
       "sku": {
         "name": "S1",
         "tier": "Standard",
@@ -293,7 +293,7 @@
       "type": "Microsoft.Web/sites",
       "apiVersion": "2022-09-01",
       "name": "[parameters('resourceName')]",
-      "location": "East US",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('resourceName'))]"
       ],
@@ -347,7 +347,7 @@
       "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
       "apiVersion": "2022-09-01",
       "name": "[concat(parameters('resourceName'), '/ftp')]",
-      "location": "East US",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
       ],
@@ -359,7 +359,7 @@
       "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
       "apiVersion": "2022-09-01",
       "name": "[concat(parameters('resourceName'), '/scm')]",
-      "location": "East US",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
       ],
@@ -371,7 +371,7 @@
       "type": "Microsoft.Web/sites/config",
       "apiVersion": "2022-09-01",
       "name": "[concat(parameters('resourceName'), '/web')]",
-      "location": "East US",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
       ],
@@ -454,7 +454,7 @@
       "type": "Microsoft.Web/sites/hostNameBindings",
       "apiVersion": "2022-09-01",
       "name": "[concat(parameters('resourceName'), '/', parameters('resourceName'), '.azurewebsites.net')]",
-      "location": "East US",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
       ],
@@ -467,7 +467,7 @@
       "type": "Microsoft.Web/sites/siteextensions",
       "apiVersion": "2022-09-01",
       "name": "[concat(parameters('resourceName'), '/Microsoft.AspNetCore.AzureAppServices.SiteExtension')]",
-      "location": "East US",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
       ]
