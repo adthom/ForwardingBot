@@ -2,13 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
   "parameters": {
-    "botServices_endpoint": {
-      "type": "SecureString"
-    },
-    "botClientId": {
-      "defaultValue": "<<botclientid>>",
-      "type": "String"
-    },
     "cleanResourceName": {
       "defaultValue": "<<name for resources with only lowercase alphanumeric>>",
       "type": "String"
@@ -28,29 +21,6 @@
   },
     "variables": {},
   "resources": [
-    {
-      "type": "Microsoft.BotService/botServices",
-      "apiVersion": "2022-09-15",
-      "name": "[parameters('resourceName')]",
-      "location": "global",
-      "sku": {
-        "name": "S1"
-      },
-      "kind": "azurebot",
-      "properties": {
-        "displayName": "[parameters('resourceName')]",
-        "iconUrl": "https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png",
-        "msaAppId": "[parameters('botClientId')]",
-        "msaAppType": "MultiTenant",
-        "luisAppIds": [],
-        "isStreamingSupported": false,
-        "schemaTransformationVersion": "1.3",
-        "tenantId": "[parameters('tenantId')]",
-        "isCmekEnabled": false,
-        "disableLocalAuth": false,
-        "endpoint": "[parameters('botServices_endpoint')]"
-      }
-    },
     {
       "type": "Microsoft.KeyVault/vaults",
       "apiVersion": "2023-02-01",
@@ -144,80 +114,6 @@
         "targetWorkerCount": 0,
         "targetWorkerSizeId": 0,
         "zoneRedundant": false
-      }
-    },
-    {
-      "type": "Microsoft.BotService/botServices/channels",
-      "apiVersion": "2022-09-15",
-      "name": "[concat(parameters('resourceName'), '/DirectLineChannel')]",
-      "location": "global",
-      "dependsOn": [
-        "[resourceId('Microsoft.BotService/botServices', parameters('resourceName'))]"
-      ],
-      "properties": {
-        "properties": {
-          "sites": [
-            {
-              "siteName": "Default Site",
-              "isEnabled": true,
-              "isV1Enabled": true,
-              "isV3Enabled": true,
-              "isSecureSiteEnabled": false,
-              "isBlockUserUploadEnabled": false
-            }
-          ],
-          "extensionKey1": "<<unsure if required>>",
-          "extensionKey2": "<<unsure if required>>"
-        },
-        "etag": "<<unsure if required>>",
-        "channelName": "DirectLineChannel",
-        "location": "global"
-      }
-    },
-    {
-      "type": "Microsoft.BotService/botServices/channels",
-      "apiVersion": "2022-09-15",
-      "name": "[concat(parameters('resourceName'), '/MsTeamsChannel')]",
-      "location": "global",
-      "dependsOn": [
-        "[resourceId('Microsoft.BotService/botServices', parameters('resourceName'))]"
-      ],
-      "properties": {
-        "properties": {
-          "enableCalling": true,
-          "incomingCallRoute": "graphPma",
-          "callingWebhook": "[concat('https://',reference(concat('Microsoft.Web/sites/', parameters('resourceName')), '2018-11-01', 'Full').properties.defaultHostName,'/callback')]",
-          "isEnabled": true,
-          "deploymentEnvironment": "CommercialDeployment",
-          "acceptedTerms": true
-        },
-        "etag": "<<unsure if required>>",
-        "channelName": "MsTeamsChannel",
-        "location": "global"
-      }
-    },
-    {
-      "type": "Microsoft.BotService/botServices/channels",
-      "apiVersion": "2022-09-15",
-      "name": "[concat(parameters('resourceName'), '/WebChatChannel')]",
-      "location": "global",
-      "dependsOn": [
-        "[resourceId('Microsoft.BotService/botServices', parameters('resourceName'))]"
-      ],
-      "properties": {
-        "properties": {
-          "sites": [
-            {
-              "siteName": "Default Site",
-              "isEnabled": true,
-              "isWebchatPreviewEnabled": true,
-              "isBlockUserUploadEnabled": false
-            }
-          ]
-        },
-        "etag": "<<unsure if required>>",
-        "channelName": "WebChatChannel",
-        "location": "global"
       }
     },
     {
