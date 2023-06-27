@@ -1,5 +1,6 @@
 ﻿namespace ForwardingBot.Bot.Services
 {
+    using ForwardingBot.Bot.Models;
     using Microsoft.Graph.Communications.Common.Telemetry;
     using System;
     using System.Collections.Generic;
@@ -15,6 +16,7 @@
     {
         private const string ModuleName = "MicrosoftTeams";
         private const string SetCommandName = "Set-CsUserCallingSettings";
+        private const string GetCommandName = "Get-CsUserCallingSettings";
         private const string ConnectCommandName = "Connect-MicrosoftTeams";
         private const int MAX_RUNSPACE_COUNT = 8;
         private const int COMMAND_TIMEOUT_SECONDS = 60;
@@ -92,6 +94,16 @@
 
         public async Task<bool> DisableForwarding(Identity identity)
         {
+            var current = await GetCurrentUserRoutingSettings(identity);
+            if (current == null)
+            {
+                return false;
+            }
+            if (current.IsForwardingEnabled == false)
+            {
+                return true;
+            }
+
             var parameters = new Dictionary<string, object>
             {
                 { "Identity", identity.Id },
@@ -103,16 +115,41 @@
 
         public async Task<bool> EnableForwarding(Identity identity, string target)
         {
+            var current = await GetCurrentUserRoutingSettings(identity);
+            if (current == null || (current.IsUnansweredEnabled == true && !await DisableUnanswered(identity)))
+            {
+                return false;
+            }
+
+            if (current.IsForwardingEnabled == true
+                && current.ForwardingTarget == target
+                && current.ForwardingTargetType == TargetType.SingleTarget
+                && current.ForwardingType == ForwardingType.Immediate)
+            {
+                return true;
+            }
+
             var parameters = new Dictionary<string, object>
             {
                 { "Identity", identity.Id },
                 { "IsForwardingEnabled", true },
                 { "ForwardingTarget", target },
-                { "ForwardingTargetType", "SingleTarget" },
-                { "ForwardingType", "Immediate" },
+                { "ForwardingTargetType", nameof(TargetType.SingleTarget) },
+                { "ForwardingType", nameof(ForwardingType.Immediate) },
             };
 
-            return await TryExecuteVoidCommand(SetCommandName, parameters); 
+            return await TryExecuteVoidCommand(SetCommandName, parameters);
+        }
+
+        public async Task<bool> DisableUnanswered(Identity identity)
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                { "Identity", identity.Id },
+                { "IsUnansweredEnabled", false },
+            };
+
+            return await TryExecuteVoidCommand(SetCommandName, parameters);
         }
 
         private readonly HashSet<string> EUIIFields = new(StringComparer.InvariantCultureIgnoreCase)
@@ -120,6 +157,19 @@
                 "Identity",
                 "ForwardingTarget",
             };
+
+        public async Task<UserRoutingSettings> GetCurrentUserRoutingSettings(Identity identity)
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                { "Identity", identity.Id },
+            };
+            var allResults = await ExecuteCommand<PSObject>(GetCommandName, parameters);
+            var result = allResults.FirstOrDefault();
+            if (result == null)
+                return null;
+            return UserRoutingSettings.ConvertFromPSObject(result);
+        }
 
         private async Task<bool> TryExecuteVoidCommand(string commandName, Dictionary<string, object> parameters)
         {
@@ -157,6 +207,50 @@
                 graphLogger.Log(TraceLevel.Error, ex);
                 return false;
             }
+        }
+
+        private async Task<IEnumerable<T>> ExecuteCommand<T>(string commandName, Dictionary<string, object> parameters)
+        {
+            var timeoutTask = Task.Delay(TimeSpan.FromSeconds(COMMAND_TIMEOUT_SECONDS));
+            using var shell = await CreateTeamsPowerShell()
+                .ContinueWith(
+                t => t.Result
+                    .AddStatement()
+                    .AddCommand(commandName)
+                    .AddParameters(parameters)
+                ).ConfigureAwait(false);
+            AddStreamHandlers(shell);
+            graphLogger.Log(TraceLevel.Verbose, $"Running {string.Join(' ', commandName, parameters.Select(p => $"-{p.Key}:{(EUIIFields.Contains(p.Key) ? "<REDACTED>" : p.Value)}"))}");
+            var input = new PSDataCollection<T>();
+            var output = new PSDataCollection<T>();
+            try
+            {
+                var shellTask = Task.Factory.FromAsync(shell.BeginInvoke(input, output), shell.EndInvoke).ContinueWith(t =>
+                {
+                    if (t.Exception != null)
+                    {
+                        graphLogger.Log(TraceLevel.Error, t.Exception);
+                    }
+                    return t.Result;
+                });
+                var completedTask = await Task.WhenAny(shellTask, timeoutTask).ConfigureAwait(false);
+                if (completedTask == timeoutTask && !shellTask.IsCompleted)
+                {
+                    graphLogger.Log(TraceLevel.Warning, "Stopping execution...");
+                    await Task.Factory.FromAsync(shell.BeginStop, shell.EndStop, null).ConfigureAwait(false);
+                    throw new TimeoutException("Command execution timeout");
+                }
+                if (shell.HadErrors)
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                graphLogger.Log(TraceLevel.Error, ex);
+                return null;
+            }
+            return output;
         }
 
         private async Task<PowerShell> CreateTeamsPowerShell()

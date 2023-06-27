@@ -22,6 +22,7 @@
             <TreatAsUsed>true</TreatAsUsed>
         </PackageReference>
         <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.11" />
+		<Reference Include="Modules\MicrosoftTeams\*\bin\Microsoft.Teams.ConfigAPI.Cmdlets.private.dll" />
     </ItemGroup>
 
     <ItemGroup>
