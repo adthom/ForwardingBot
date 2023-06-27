@@ -54,7 +54,7 @@
         "provisioningState": "Succeeded",
         "publicNetworkAccess": "Enabled"
       },
-      "resources":[
+      "resources": [
         {
           "type": "secrets",
           "apiVersion": "2023-02-01",
@@ -138,7 +138,7 @@
               "enabled": true
             }
           }
-        },
+        }
       ]
     },
     {
@@ -198,7 +198,7 @@
               "apiVersion": "2022-09-01",
               "name": "logs",
               "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('cleanResourceName'), 'default')]",
+                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('cleanResourceName'), 'default')]"
               ],
               "properties": {
                 "immutableStorageWithVersioning": {
@@ -256,7 +256,7 @@
               "corsRules": []
             }
           }
-        },
+        }
       ]
     },
     {
