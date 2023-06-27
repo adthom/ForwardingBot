@@ -11,7 +11,7 @@
       "type": "String"
     },
     "tenantId": {
-      "defaultValue": "<<tenantId>>",
+      "defaultValue": "[subscription().tenantId]",
       "type": "String"
     },
     "location": {
