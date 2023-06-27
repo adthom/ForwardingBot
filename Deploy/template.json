@@ -1,6 +1,6 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "cleanResourceName": {
       "defaultValue": "<<name for resources with only lowercase alphanumeric>>",
@@ -19,7 +19,7 @@
       "type": "String"
     }
   },
-    "variables": {},
+  "variables": {},
   "resources": [
     {
       "type": "Microsoft.KeyVault/vaults",
@@ -53,7 +53,93 @@
         "vaultUri": "[concat('https://', parameters('cleanResourceName'), '.vault.azure.net/')]",
         "provisioningState": "Succeeded",
         "publicNetworkAccess": "Enabled"
-      }
+      },
+      "resources":[
+        {
+          "type": "secrets",
+          "apiVersion": "2023-02-01",
+          "name": "botbaseuri",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+          ],
+          "properties": {
+            "attributes": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "type": "secrets",
+          "apiVersion": "2022-07-01",
+          "name": "botclientid",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+          ],
+          "properties": {
+            "attributes": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "type": "secrets",
+          "apiVersion": "2022-07-01",
+          "name": "botsecret",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+          ],
+          "properties": {
+            "attributes": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "type": "secrets",
+          "apiVersion": "2022-07-01",
+          "name": "bottenantid",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+          ],
+          "properties": {
+            "attributes": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "type": "secrets",
+          "apiVersion": "2022-07-01",
+          "name": "teamsadminpassword",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+          ],
+          "properties": {
+            "attributes": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "type": "secrets",
+          "apiVersion": "2022-07-01",
+          "name": "teamsadminusername",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
+          ],
+          "properties": {
+            "attributes": {
+              "enabled": true
+            }
+          }
+        },
+      ]
     },
     {
       "type": "Microsoft.Storage/storageAccounts",
@@ -88,7 +174,90 @@
           },
           "keySource": "Microsoft.Storage"
         }
-      }
+      },
+      "resources": [
+        {
+          "type": "blobServices",
+          "apiVersion": "2022-09-01",
+          "name": "default",
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
+          ],
+          "properties": {
+            "cors": {
+              "corsRules": []
+            },
+            "deleteRetentionPolicy": {
+              "allowPermanentDelete": false,
+              "enabled": false
+            }
+          },
+          "resources": [
+            {
+              "type": "containers",
+              "apiVersion": "2022-09-01",
+              "name": "logs",
+              "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('cleanResourceName'), 'default')]",
+              ],
+              "properties": {
+                "immutableStorageWithVersioning": {
+                  "enabled": false
+                },
+                "defaultEncryptionScope": "$account-encryption-key",
+                "denyEncryptionScopeOverride": false,
+                "publicAccess": "None"
+              }
+            }
+          ]
+        },
+        {
+          "type": "fileServices",
+          "apiVersion": "2022-09-01",
+          "name": "default",
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
+          ],
+          "properties": {
+            "protocolSettings": {
+              "smb": {}
+            },
+            "cors": {
+              "corsRules": []
+            },
+            "shareDeleteRetentionPolicy": {
+              "enabled": true,
+              "days": 7
+            }
+          }
+        },
+        {
+          "type": "queueServices",
+          "apiVersion": "2022-09-01",
+          "name": "default",
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
+          ],
+          "properties": {
+            "cors": {
+              "corsRules": []
+            }
+          }
+        },
+        {
+          "type": "tableServices",
+          "apiVersion": "2022-09-01",
+          "name": "default",
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
+          ],
+          "properties": {
+            "cors": {
+              "corsRules": []
+            }
+          }
+        },
+      ]
     },
     {
       "type": "Microsoft.Web/serverfarms",
@@ -132,161 +301,6 @@
         "TeamsAdmin__Username": "[concat('@Microsoft.KeyVault(SecretUri=', reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', parameters('cleanResourceName'), 'teamsadminusername'),'2015-06-01').secretUriWithVersion, ')')]",
         "TeamsAdmin__Password": "[concat('@Microsoft.KeyVault(SecretUri=', reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', parameters('cleanResourceName'), 'teamsadminpassword'),'2015-06-01').secretUriWithVersion, ')')]",
         "Bot__PlaceCallEndpointUrl": "https://graph.microsoft.com/v1.0"
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults/secrets",
-      "apiVersion": "2023-02-01",
-      "name": "[concat(parameters('cleanResourceName'), '/botbaseuri')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
-      ],
-      "properties": {
-        "attributes": {
-          "enabled": true
-        }
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults/secrets",
-      "apiVersion": "2023-02-01",
-      "name": "[concat(parameters('cleanResourceName'), '/botclientid')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
-      ],
-      "properties": {
-        "attributes": {
-          "enabled": true
-        }
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults/secrets",
-      "apiVersion": "2023-02-01",
-      "name": "[concat(parameters('cleanResourceName'), '/botsecret')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
-      ],
-      "properties": {
-        "attributes": {
-          "enabled": true
-        }
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults/secrets",
-      "apiVersion": "2023-02-01",
-      "name": "[concat(parameters('cleanResourceName'), '/bottenantid')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
-      ],
-      "properties": {
-        "attributes": {
-          "enabled": true
-        }
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults/secrets",
-      "apiVersion": "2023-02-01",
-      "name": "[concat(parameters('cleanResourceName'), '/teamsadminpassword')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
-      ],
-      "properties": {
-        "attributes": {
-          "enabled": true
-        }
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults/secrets",
-      "apiVersion": "2023-02-01",
-      "name": "[concat(parameters('cleanResourceName'), '/teamsadminusername')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
-      ],
-      "properties": {
-        "attributes": {
-          "enabled": true
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices",
-      "apiVersion": "2022-09-01",
-      "name": "[concat(parameters('cleanResourceName'), '/default')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
-      ],
-      "sku": {
-        "name": "Standard_LRS",
-        "tier": "Standard"
-      },
-      "properties": {
-        "cors": {
-          "corsRules": []
-        },
-        "deleteRetentionPolicy": {
-          "allowPermanentDelete": false,
-          "enabled": false
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/fileServices",
-      "apiVersion": "2022-09-01",
-      "name": "[concat(parameters('cleanResourceName'), '/default')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
-      ],
-      "sku": {
-        "name": "Standard_LRS",
-        "tier": "Standard"
-      },
-      "properties": {
-        "protocolSettings": {
-          "smb": {}
-        },
-        "cors": {
-          "corsRules": []
-        },
-        "shareDeleteRetentionPolicy": {
-          "enabled": true,
-          "days": 7
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/queueServices",
-      "apiVersion": "2022-09-01",
-      "name": "[concat(parameters('cleanResourceName'), '/default')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
-      ],
-      "properties": {
-        "cors": {
-          "corsRules": []
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/tableServices",
-      "apiVersion": "2022-09-01",
-      "name": "[concat(parameters('cleanResourceName'), '/default')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
-      ],
-      "properties": {
-        "cors": {
-          "corsRules": []
-        }
       }
     },
     {
@@ -341,152 +355,6 @@
         "redundancyMode": "None",
         "storageAccountRequired": false,
         "keyVaultReferenceIdentity": "SystemAssigned"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-      "apiVersion": "2022-09-01",
-      "name": "[concat(parameters('resourceName'), '/ftp')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
-      ],
-      "properties": {
-        "allow": true
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-      "apiVersion": "2022-09-01",
-      "name": "[concat(parameters('resourceName'), '/scm')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
-      ],
-      "properties": {
-        "allow": true
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/config",
-      "apiVersion": "2022-09-01",
-      "name": "[concat(parameters('resourceName'), '/web')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
-      ],
-      "properties": {
-        "numberOfWorkers": 1,
-        "defaultDocuments": [
-          "Default.htm",
-          "Default.html",
-          "Default.asp",
-          "index.htm",
-          "index.html",
-          "iisstart.htm",
-          "default.aspx",
-          "index.php",
-          "hostingstart.html"
-        ],
-        "netFrameworkVersion": "v6.0",
-        "phpVersion": "5.6",
-        "requestTracingEnabled": true,
-        "requestTracingExpirationTime": "9999-12-31T23:59:00Z",
-        "remoteDebuggingEnabled": false,
-        "remoteDebuggingVersion": "VS2019",
-        "httpLoggingEnabled": true,
-        "acrUseManagedIdentityCreds": false,
-        "logsDirectorySizeLimit": 35,
-        "detailedErrorLoggingEnabled": true,
-        "publishingUsername": "[concat('$',parameters('resourceName'))]",
-        "scmType": "None",
-        "use32BitWorkerProcess": false,
-        "webSocketsEnabled": false,
-        "alwaysOn": false,
-        "managedPipelineMode": "Integrated",
-        "virtualApplications": [
-          {
-            "virtualPath": "/",
-            "physicalPath": "site\\wwwroot",
-            "preloadEnabled": false
-          }
-        ],
-        "loadBalancing": "LeastRequests",
-        "experiments": {
-          "rampUpRules": []
-        },
-        "autoHealEnabled": false,
-        "vnetRouteAllEnabled": false,
-        "vnetPrivatePortsCount": 0,
-        "localMySqlEnabled": false,
-        "managedServiceIdentityId": 41302,
-        "ipSecurityRestrictions": [
-          {
-            "ipAddress": "Any",
-            "action": "Allow",
-            "priority": 2147483647,
-            "name": "Allow all",
-            "description": "Allow all access"
-          }
-        ],
-        "scmIpSecurityRestrictions": [
-          {
-            "ipAddress": "Any",
-            "action": "Allow",
-            "priority": 2147483647,
-            "name": "Allow all",
-            "description": "Allow all access"
-          }
-        ],
-        "scmIpSecurityRestrictionsUseMain": false,
-        "http20Enabled": false,
-        "minTlsVersion": "1.2",
-        "scmMinTlsVersion": "1.2",
-        "ftpsState": "FtpsOnly",
-        "preWarmedInstanceCount": 0,
-        "elasticWebAppScaleLimit": 0,
-        "functionsRuntimeScaleMonitoringEnabled": false,
-        "minimumElasticInstanceCount": 0,
-        "azureStorageAccounts": {}
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/hostNameBindings",
-      "apiVersion": "2022-09-01",
-      "name": "[concat(parameters('resourceName'), '/', parameters('resourceName'), '.azurewebsites.net')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
-      ],
-      "properties": {
-        "siteName": "[parameters('resourceName')]",
-        "hostNameType": "Verified"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/siteextensions",
-      "apiVersion": "2022-09-01",
-      "name": "[concat(parameters('resourceName'), '/Microsoft.AspNetCore.AzureAppServices.SiteExtension')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('resourceName'))]"
-      ]
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2022-09-01",
-      "name": "[concat(parameters('cleanResourceName'), '/default/logs')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('cleanResourceName'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
       }
     }
   ]
