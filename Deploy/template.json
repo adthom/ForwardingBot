@@ -59,70 +59,70 @@
           "type": "secrets",
           "apiVersion": "2023-02-01",
           "name": "botbaseuri",
-          "location": "[parameters('location')]",
           "dependsOn": [
             "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
           ],
           "properties": {
             "attributes": {
               "enabled": true
-            }
+            },
+            "value": "REPLACE_THIS"
           }
         },
         {
           "type": "secrets",
           "apiVersion": "2022-07-01",
           "name": "botclientid",
-          "location": "[parameters('location')]",
           "dependsOn": [
             "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
           ],
           "properties": {
             "attributes": {
               "enabled": true
-            }
+            },
+            "value": "REPLACE_THIS"
           }
         },
         {
           "type": "secrets",
           "apiVersion": "2022-07-01",
           "name": "botsecret",
-          "location": "[parameters('location')]",
           "dependsOn": [
             "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
           ],
           "properties": {
             "attributes": {
               "enabled": true
-            }
+            },
+            "value": "REPLACE_THIS"
           }
         },
         {
           "type": "secrets",
           "apiVersion": "2022-07-01",
           "name": "bottenantid",
-          "location": "[parameters('location')]",
           "dependsOn": [
             "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
           ],
           "properties": {
             "attributes": {
               "enabled": true
-            }
+            },
+            "value": "REPLACE_THIS"
           }
         },
         {
           "type": "secrets",
           "apiVersion": "2022-07-01",
           "name": "teamsadminpassword",
-          "location": "[parameters('location')]",
           "dependsOn": [
             "[resourceId('Microsoft.KeyVault/vaults', parameters('cleanResourceName'))]"
           ],
           "properties": {
             "attributes": {
               "enabled": true
-            }
+            },
+            "value": "REPLACE_THIS"
           }
         },
         {
@@ -136,7 +136,8 @@
           "properties": {
             "attributes": {
               "enabled": true
-            }
+            },
+            "value": "REPLACE_THIS"
           }
         }
       ]
@@ -184,9 +185,6 @@
             "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
           ],
           "properties": {
-            "cors": {
-              "corsRules": []
-            },
             "deleteRetentionPolicy": {
               "allowPermanentDelete": false,
               "enabled": false
@@ -212,37 +210,12 @@
           ]
         },
         {
-          "type": "fileServices",
-          "apiVersion": "2022-09-01",
-          "name": "default",
-          "dependsOn": [
-            "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
-          ],
-          "properties": {
-            "protocolSettings": {
-              "smb": {}
-            },
-            "cors": {
-              "corsRules": []
-            },
-            "shareDeleteRetentionPolicy": {
-              "enabled": true,
-              "days": 7
-            }
-          }
-        },
-        {
           "type": "queueServices",
           "apiVersion": "2022-09-01",
           "name": "default",
           "dependsOn": [
             "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
-          ],
-          "properties": {
-            "cors": {
-              "corsRules": []
-            }
-          }
+          ]
         },
         {
           "type": "tableServices",
@@ -250,12 +223,7 @@
           "name": "default",
           "dependsOn": [
             "[resourceId('Microsoft.Storage/storageAccounts', parameters('cleanResourceName'))]"
-          ],
-          "properties": {
-            "cors": {
-              "corsRules": []
-            }
-          }
+          ]
         }
       ]
     },
