@@ -15,7 +15,7 @@
       "type": "String"
     },
     "location": {
-      "defaultValue": "[resourcegroup().location]",
+      "defaultValue": "[resourceGroup().location]",
       "type": "String"
     }
   },
