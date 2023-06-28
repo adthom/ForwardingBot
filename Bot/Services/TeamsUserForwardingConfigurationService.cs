@@ -118,10 +118,10 @@
         public async Task<bool> EnableForwarding(Identity identity, string target)
         {
             var current = await GetCurrentUserRoutingSettings(identity);
-            //if (current == null || (current.IsUnansweredEnabled == true && !await DisableUnanswered(identity)))
-            //{
-            //    return false;
-            //}
+            if (current == null || (current.IsUnansweredEnabled == true && !await DisableUnanswered(identity)))
+            {
+                return false;
+            }
 
             if (current.IsForwardingEnabled == true
                 && current.ForwardingTarget == target
@@ -167,7 +167,7 @@
                 { "Identity", identity.Id },
             };
             var allResults = await ExecuteCommand<IUserRoutingSettings>(GetCommandName, parameters);
-            var result = allResults.FirstOrDefault();
+            var result = allResults?.FirstOrDefault();
             if (result == null)
                 return null;
             return UserRoutingSettings.ConvertFromIUserRoutingSettings(result);
@@ -211,6 +211,11 @@
             }
         }
 
+        private async Task<IEnumerable<PSObject>> ExecuteCommand(string commandName, Dictionary<string, object> parameters)
+        {
+            return await ExecuteCommand<PSObject>(commandName, parameters);
+        }
+
         private async Task<IEnumerable<T>> ExecuteCommand<T>(string commandName, Dictionary<string, object> parameters)
         {
             var timeoutTask = Task.Delay(TimeSpan.FromSeconds(COMMAND_TIMEOUT_SECONDS));
@@ -223,11 +228,9 @@
                 ).ConfigureAwait(false);
             AddStreamHandlers(shell);
             graphLogger.Log(TraceLevel.Verbose, $"Running {string.Join(' ', commandName, parameters.Select(p => $"-{p.Key}:{(EUIIFields.Contains(p.Key) ? "<REDACTED>" : p.Value)}"))}");
-            var input = new PSDataCollection<T>();
-            var output = new PSDataCollection<T>();
             try
             {
-                var shellTask = Task.Factory.FromAsync(shell.BeginInvoke(input, output), shell.EndInvoke).ContinueWith(t =>
+                var shellTask = Task.Factory.FromAsync(shell.BeginInvoke(), shell.EndInvoke).ContinueWith(t =>
                 {
                     if (t.Exception != null)
                     {
@@ -246,13 +249,13 @@
                 {
                     return null;
                 }
+                return shellTask.Result.Select(r => r.BaseObject).OfType<T>();
             }
             catch (Exception ex)
             {
                 graphLogger.Log(TraceLevel.Error, ex);
                 return null;
             }
-            return output;
         }
 
         private async Task<PowerShell> CreateTeamsPowerShell()
