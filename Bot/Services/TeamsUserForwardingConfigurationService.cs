@@ -2,6 +2,7 @@
 {
     using ForwardingBot.Bot.Models;
     using Microsoft.Graph.Communications.Common.Telemetry;
+    using Microsoft.Teams.ConfigAPI.Cmdlets.Generated.Models;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -11,6 +12,7 @@
     using System.Management.Automation.Runspaces;
     using System.Threading.Tasks;
     using Identity = Microsoft.Graph.Identity;
+    using UserRoutingSettings = ForwardingBot.Bot.Models.UserRoutingSettings;
 
     public class TeamsUserForwardingConfigurationService : ITeamsUserForwardingConfigurationService, IDisposable
     {
@@ -116,10 +118,10 @@
         public async Task<bool> EnableForwarding(Identity identity, string target)
         {
             var current = await GetCurrentUserRoutingSettings(identity);
-            if (current == null || (current.IsUnansweredEnabled == true && !await DisableUnanswered(identity)))
-            {
-                return false;
-            }
+            //if (current == null || (current.IsUnansweredEnabled == true && !await DisableUnanswered(identity)))
+            //{
+            //    return false;
+            //}
 
             if (current.IsForwardingEnabled == true
                 && current.ForwardingTarget == target
@@ -164,11 +166,11 @@
             {
                 { "Identity", identity.Id },
             };
-            var allResults = await ExecuteCommand<PSObject>(GetCommandName, parameters);
+            var allResults = await ExecuteCommand<IUserRoutingSettings>(GetCommandName, parameters);
             var result = allResults.FirstOrDefault();
             if (result == null)
                 return null;
-            return UserRoutingSettings.ConvertFromPSObject(result);
+            return UserRoutingSettings.ConvertFromIUserRoutingSettings(result);
         }
 
         private async Task<bool> TryExecuteVoidCommand(string commandName, Dictionary<string, object> parameters)
