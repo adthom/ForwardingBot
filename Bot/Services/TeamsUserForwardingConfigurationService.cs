@@ -12,7 +12,7 @@
     using System.Management.Automation.Runspaces;
     using System.Threading.Tasks;
     using Identity = Microsoft.Graph.Identity;
-    using UserRoutingSettings = ForwardingBot.Bot.Models.UserRoutingSettings;
+    using UserRoutingSettings = Models.UserRoutingSettings;
 
     public class TeamsUserForwardingConfigurationService : ITeamsUserForwardingConfigurationService, IDisposable
     {

@@ -28,62 +28,10 @@ namespace ForwardingBot.Bot.Controllers
         /// Get the default content of home page.
         /// </summary>
         /// <returns>Default content.</returns>
-        [HttpGet("/")]
+        [HttpGet("/health")]
         public string Get()
         {
-            return "Home Page";
-        }
-
-        /// <summary>
-        /// Get the service logs.
-        /// </summary>
-        /// <param name="skip">Skip specified lines.</param>
-        /// <param name="take">Take specified lines.</param>
-        /// <returns>The logs.</returns>
-        [HttpGet]
-        [Route("/logs")]
-        public IActionResult GetLogs(
-            [FromQuery] int skip = 0,
-            [FromQuery] int take = 1000)
-        {
-            AddRefreshHeader(3);
-            return Content(
-                observer.GetLogs(skip, take),
-                System.Net.Mime.MediaTypeNames.Text.Plain,
-                System.Text.Encoding.UTF8);
-        }
-
-        /// <summary>
-        /// Get the service logs.
-        /// </summary>
-        /// <param name="filter">The filter.</param>
-        /// <param name="skip">Skip specified lines.</param>
-        /// <param name="take">Take specified lines.</param>
-        /// <returns>
-        /// The logs.
-        /// </returns>
-        [HttpGet]
-        [Route("/logs/{filter}")]
-        public IActionResult GetLogs(
-            string filter,
-            [FromQuery] int skip = 0,
-            [FromQuery] int take = 1000)
-        {
-            AddRefreshHeader(3);
-            return Content(
-                observer.GetLogs(filter, skip, take),
-                System.Net.Mime.MediaTypeNames.Text.Plain,
-                System.Text.Encoding.UTF8);
-        }
-
-        /// <summary>
-        /// Add refresh headers for browsers to download content.
-        /// </summary>
-        /// <param name="seconds">Refresh rate.</param>
-        private void AddRefreshHeader(int seconds)
-        {
-            Response.Headers.Add("Cache-Control", "private,must-revalidate,post-check=1,pre-check=2,no-cache");
-            Response.Headers.Add("Refresh", seconds.ToString());
+            return "OK";
         }
     }
 }
